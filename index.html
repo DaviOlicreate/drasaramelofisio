@@ -381,7 +381,7 @@
       </button>
     </div>
 
-    <div id="menu-mobile" class="hidden border-t border-sand-300 bg-sage-100 shadow-soft lg:hidden">
+    <div id="menu-mobile" class="hidden border-t border-sand-300 bg-sand-100 shadow-soft lg:hidden">
       <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4" aria-label="Navegação mobile">
         <a href="#para-voce"     class="rounded-xl px-4 py-3 text-sm font-medium text-bark-700 transition hover:bg-sage-100">Isso é para você se…</a>
         <a href="#sobre"         class="rounded-xl px-4 py-3 text-sm font-medium text-bark-700 transition hover:bg-sage-100">Quem é a Dra. Sara</a>
@@ -401,7 +401,7 @@
     <!-- ============================================================
          SEÇÃO 1 — TOPO
          ============================================================ -->
-    <section id="inicio" class="relative isolate flex min-h-[100svh] flex-col overflow-hidden img-reserva bg-sage-100">
+    <section id="inicio" class="relative isolate flex min-h-[100svh] flex-col overflow-hidden img-reserva bg-sand-200">
 
       <!-- Mobile: retrato | Desktop (>=1024px): versão panorâmica com a Sara à direita -->
       <picture class="contents">
@@ -412,8 +412,8 @@
       </picture>
 
       <!-- Véus para a leitura do texto -->
-      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-sage-100 via-sage-100/92 to-sand-200/60 lg:from-sage-100/96 lg:via-sage-100/72 lg:to-sand-200/15" aria-hidden="true"></div>
-      <div class="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-sage-100 to-transparent" aria-hidden="true"></div>
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-sand-100 via-sand-100/92 to-sand-200/55 lg:from-sand-100/96 lg:via-sand-100/70 lg:to-sand-200/10" aria-hidden="true"></div>
+      <div class="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-sand-200 to-transparent" aria-hidden="true"></div>
 
       <div class="hero-pad mx-auto flex w-full max-w-7xl flex-1 items-center px-5 pb-10 pt-28 lg:px-8 lg:pb-12 lg:pt-32">
         <div class="max-w-2xl reveal">
@@ -1374,9 +1374,9 @@
     var cabecalho = document.getElementById('cabecalho');
     function aoRolar() {
       if (window.scrollY > 24) {
-        cabecalho.classList.add('bg-sage-100/92', 'backdrop-blur', 'shadow-soft');
+        cabecalho.classList.add('bg-sand-100/92', 'backdrop-blur', 'shadow-soft');
       } else {
-        cabecalho.classList.remove('bg-sage-100/92', 'backdrop-blur', 'shadow-soft');
+        cabecalho.classList.remove('bg-sand-100/92', 'backdrop-blur', 'shadow-soft');
       }
     }
     window.addEventListener('scroll', aoRolar, { passive: true });
@@ -1393,7 +1393,7 @@
       iconeAbrir.classList.toggle('hidden', aberto);
       iconeFechar.classList.toggle('hidden', !aberto);
       botao.setAttribute('aria-expanded', String(aberto));
-      cabecalho.classList.toggle('bg-sage-100', aberto);
+      cabecalho.classList.toggle('bg-sand-100', aberto);
       if (!aberto) aoRolar();
     }
 
