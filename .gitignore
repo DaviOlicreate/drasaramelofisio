@@ -1,0 +1,6 @@
+# Sistema / configuração local
+.DS_Store
+.claude/
+
+# Originais pesados da sessão de fotos (~79 MB) — só os .webp vão para o site
+Sara/
