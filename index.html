@@ -205,8 +205,27 @@
       font-size: .95rem; font-weight: 600; letter-spacing: .06em;
       text-transform: uppercase; color: #4e4238;
     }
-    .agenda__setas { display: flex; gap: .4rem; color: #b4b89f; }
-    .agenda__setas svg { height: 1rem; width: 1rem; }
+    .agenda__setas { display: flex; gap: .25rem; }
+    .agenda__seta {
+      display: flex; height: 1.9rem; width: 1.9rem; align-items: center; justify-content: center;
+      border: 0; border-radius: .6rem; background: transparent; color: #9aa083; cursor: pointer;
+      transition: background .25s, color .25s;
+    }
+    .agenda__seta svg { height: 1rem; width: 1rem; }
+    .agenda__seta:hover:not(:disabled) { background: #eef0e8; color: #4e533f; }
+    .agenda__seta:disabled { opacity: .3; cursor: not-allowed; }
+    .agenda__seta:focus-visible { outline: 2px solid #666c54; outline-offset: 2px; }
+
+    .agenda__cta {
+      display: inline-flex; align-items: center; gap: .35rem; margin-left: auto;
+      border-radius: 999px; background: #666c54; padding: .45rem .85rem;
+      font-size: .74rem; font-weight: 600; color: #fff; text-decoration: none;
+      transition: background .25s, transform .25s, opacity .25s;
+    }
+    .agenda__cta svg { height: .8rem; width: .8rem; }
+    .agenda__cta:hover { background: #4e533f; transform: translateY(-1px); }
+    .agenda__cta:focus-visible { outline: 2px solid #4e533f; outline-offset: 2px; }
+    .agenda__cta[aria-disabled="true"] { opacity: .45; pointer-events: none; }
 
     .agenda__semana, .agenda__dias {
       display: grid; grid-template-columns: repeat(7, 1fr); gap: .3rem;
@@ -220,10 +239,15 @@
 
     .agenda__dia {
       position: relative; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
+      border: 0; padding: 0; background: transparent; font: inherit;
       border-radius: .7rem; font-size: .78rem; font-weight: 500; color: #736555;
+      transition: background .2s, color .2s;
     }
+    button.agenda__dia:not(:disabled) { cursor: pointer; }
+    button.agenda__dia:not(:disabled):hover { background: #eef0e8; color: #4e533f; }
+    .agenda__dia:focus-visible { outline: 2px solid #666c54; outline-offset: 1px; }
     .agenda__dia--vazio { visibility: hidden; }
-    .agenda__dia--passado { color: #cdd0bd; }
+    .agenda__dia--passado, .agenda__dia:disabled { color: #cdd0bd; }
 
     /* pontinho de horário livre */
     .agenda__dia--livre::after {
@@ -1016,13 +1040,19 @@
           </p>
 
 
-          <!-- Calendário ilustrativo: reforça que existe agenda aberta -->
-          <div class="agenda mt-10" id="agenda" role="img" aria-label="Ilustração de um calendário com dias disponíveis para avaliação">
+          <!-- Calendário: a pessoa escolhe o dia e ele vai junto na mensagem do WhatsApp -->
+          <div class="agenda mt-10" id="agenda" role="group" aria-labelledby="agenda-titulo">
+            <p id="agenda-titulo" class="sr-only">Escolha um dia de preferência para a avaliação</p>
+
             <div class="agenda__topo">
               <span class="agenda__mes" id="agenda-mes">Mês</span>
-              <span class="agenda__setas" aria-hidden="true">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.5 7.5 12l7.5-7.5"/></svg>
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4.5 16.5 12 9 19.5"/></svg>
+              <span class="agenda__setas">
+                <button type="button" id="agenda-anterior" class="agenda__seta" aria-label="Mês anterior">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.5 7.5 12l7.5-7.5"/></svg>
+                </button>
+                <button type="button" id="agenda-proximo" class="agenda__seta" aria-label="Próximo mês">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4.5 16.5 12 9 19.5"/></svg>
+                </button>
               </span>
             </div>
 
@@ -1030,15 +1060,19 @@
               <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
             </div>
 
-            <div class="agenda__dias" id="agenda-dias" aria-hidden="true"></div>
+            <div class="agenda__dias" id="agenda-dias"></div>
 
             <div class="agenda__rodape">
-              <span class="agenda__selo">
+              <span class="agenda__selo" id="agenda-selo">
                 <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-                Avaliação marcada
+                <span id="agenda-escolha">Escolha um dia</span>
               </span>
-              <span class="agenda__nota">Ilustrativo &middot; o horário é confirmado no WhatsApp</span>
+              <a href="#" id="agenda-cta" class="agenda__cta">
+                Quero este dia
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12l-7.5 7.5"/></svg>
+              </a>
             </div>
+            <p class="agenda__nota mt-2">Atendo de segunda a sexta. O horário do dia é combinado no WhatsApp.</p>
           </div>
 
           <ul class="mt-10 space-y-5">
@@ -1448,6 +1482,7 @@
         'Situação: ' + (dados.get('condicao') || ''),
         'Bairro/cidade: ' + (dados.get('bairro') || '')
       ];
+      if (dataEscolhida) linhas.push('Dia de preferência: ' + dataEscolhida);
       var obs = (dados.get('mensagem') || '').trim();
       if (obs) linhas.push('Mais detalhes: ' + obs);
 
@@ -1461,77 +1496,141 @@
     });
 
 
-    /* ---------- CALENDÁRIO ILUSTRATIVO ---------- */
+    /* ---------- CALENDÁRIO: escolha do dia de preferência ---------- */
     var agenda = document.getElementById('agenda');
+    var dataEscolhida = null;                                // vira texto e entra na mensagem
+
     if (agenda) {
-      var grade = document.getElementById('agenda-dias');
-      var hoje = new Date();
-      var ano = hoje.getFullYear(), mes = hoje.getMonth();
-      var meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho',
+      var gradeAgenda = document.getElementById('agenda-dias');
+      var rotuloMes = document.getElementById('agenda-mes');
+      var rotuloEscolha = document.getElementById('agenda-escolha');
+      var ctaAgenda = document.getElementById('agenda-cta');
+      var btnAnterior = document.getElementById('agenda-anterior');
+      var btnProximo = document.getElementById('agenda-proximo');
+
+      var MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho',
                    'Agosto','Setembro','Outubro','Novembro','Dezembro'];
+      var SEMANA = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
 
-      var totalDias = new Date(ano, mes + 1, 0).getDate();
-      var diaDeHoje = hoje.getDate();
+      var hoje = new Date(); hoje.setHours(0,0,0,0);
+      var limiteMin = new Date(hoje.getFullYear(), hoje.getMonth(), 1);
+      var limiteMax = new Date(hoje.getFullYear(), hoje.getMonth() + 4, 1);   // três meses à frente do mês exibido
 
-      // Perto do fim do mês sobram poucos dias e o calendário fica todo cinza:
-      // nesse caso mostramos o mês seguinte inteiro.
-      if (totalDias - diaDeHoje < 8) {
-        mes += 1;
-        if (mes > 11) { mes = 0; ano += 1; }
-        totalDias = new Date(ano, mes + 1, 0).getDate();
-        diaDeHoje = 0;                                       // nenhum dia passado
+      // Mês inicial: perto do fim do mês quase não sobra dia útil, então já abre no seguinte
+      var totalDoMes = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0).getDate();
+      var inicio = (totalDoMes - hoje.getDate() < 8)
+        ? new Date(hoje.getFullYear(), hoje.getMonth() + 1, 1)
+        : new Date(hoje.getFullYear(), hoje.getMonth(), 1);
+
+      var vendo = new Date(inicio);                          // mês exibido
+      var selecionada = null;                                // Date escolhida
+      var interagiu = false;
+
+      function eUtil(d) { var s = d.getDay(); return s !== 0 && s !== 6; }
+      function disponivel(d) { return eUtil(d) && d >= hoje; }
+
+      function sugestao() {
+        // primeiro dia útil a partir de três dias, dentro do mês exibido
+        var d = new Date(Math.max(vendo.getTime(), new Date(hoje.getTime() + 3*864e5).setHours(0,0,0,0)));
+        var fim = new Date(vendo.getFullYear(), vendo.getMonth() + 1, 0);
+        while (d <= fim && !disponivel(d)) d.setDate(d.getDate() + 1);
+        return d <= fim ? d : null;
       }
 
-      document.getElementById('agenda-mes').textContent = meses[mes] + ' de ' + ano;
-      var primeiroDia = new Date(ano, mes, 1).getDay();      // 0 = domingo
-
-      // o dia "escolhido" é o próximo dia útil a partir de três dias
-      var escolhido = Math.min(diaDeHoje + 3, totalDias);
-      var giro = 0;
-      while (giro < 7) {
-        var ds = new Date(ano, mes, escolhido).getDay();
-        if (ds !== 0 && ds !== 6) break;                     // nem domingo nem sábado
-        escolhido = escolhido < totalDias ? escolhido + 1 : 1;
-        giro++;
-      }
-
-      var html = '';
-      var i = 0;
-      for (var v = 0; v < primeiroDia; v++, i++) {
-        html += '<span class="agenda__dia agenda__dia--vazio" style="--i:' + i + '"></span>';
-      }
-      for (var d = 1; d <= totalDias; d++, i++) {
-        var semana = new Date(ano, mes, d).getDay();
-        var classes = 'agenda__dia';
-        var pulso = '';
-        if (d < diaDeHoje) {
-          classes += ' agenda__dia--passado';
-        } else if (d === escolhido) {
-          classes += ' agenda__dia--sel';
-          pulso = '<span class="agenda__pulso"></span>';
-        } else if (semana > 0 && semana < 6 && d > diaDeHoje) {
-          classes += ' agenda__dia--livre';                  // dia útil com horário
+      function aplicarEscolha() {
+        if (!selecionada) {
+          rotuloEscolha.textContent = 'Escolha um dia';
+          ctaAgenda.setAttribute('aria-disabled', 'true');
+          ctaAgenda.removeAttribute('href');
+          dataEscolhida = null;
+          return;
         }
-        html += '<span class="' + classes + '" style="--i:' + i + '">' + pulso + '<span>' + d + '</span></span>';
+        var texto = SEMANA[selecionada.getDay()] + ', ' + selecionada.getDate() +
+                    ' de ' + MESES[selecionada.getMonth()].toLowerCase();
+        dataEscolhida = texto;
+        rotuloEscolha.textContent = texto.charAt(0).toUpperCase() + texto.slice(1);
+        ctaAgenda.removeAttribute('aria-disabled');
+        ctaAgenda.setAttribute('href', montarUrl(
+          WHATSAPP_MESSAGE + ' Meu dia de preferência é ' + texto + '.'));
+        ctaAgenda.setAttribute('target', '_blank');
+        ctaAgenda.setAttribute('rel', 'noopener noreferrer');
       }
-      grade.innerHTML = html;
 
-      // a animação reinicia a cada ciclo, mas só enquanto o calendário estiver visível
+      function desenhar(animar) {
+        rotuloMes.textContent = MESES[vendo.getMonth()] + ' de ' + vendo.getFullYear();
+        btnAnterior.disabled = new Date(vendo.getFullYear(), vendo.getMonth() - 1, 1) < limiteMin;
+        btnProximo.disabled  = new Date(vendo.getFullYear(), vendo.getMonth() + 1, 1) >= limiteMax;
+
+        var primeiro = new Date(vendo.getFullYear(), vendo.getMonth(), 1).getDay();
+        var total = new Date(vendo.getFullYear(), vendo.getMonth() + 1, 0).getDate();
+        var html = '', i = 0;
+
+        for (var v = 0; v < primeiro; v++, i++) {
+          html += '<span class="agenda__dia agenda__dia--vazio" style="--i:' + i + '"></span>';
+        }
+        for (var n = 1; n <= total; n++, i++) {
+          var d = new Date(vendo.getFullYear(), vendo.getMonth(), n);
+          var livre = disponivel(d);
+          var sel = selecionada && d.getTime() === selecionada.getTime();
+          var classes = 'agenda__dia' + (livre ? ' agenda__dia--livre' : '') +
+                        (d < hoje ? ' agenda__dia--passado' : '') + (sel ? ' agenda__dia--sel' : '');
+          html += '<button type="button" class="' + classes + '" style="--i:' + i + '"' +
+                  (livre ? '' : ' disabled') +
+                  ' data-dia="' + n + '"' +
+                  ' aria-pressed="' + (sel ? 'true' : 'false') + '"' +
+                  ' aria-label="' + n + ' de ' + MESES[vendo.getMonth()] +
+                  (livre ? '' : ' — indisponível') + '">' +
+                  (sel ? '<span class="agenda__pulso"></span>' : '') +
+                  '<span>' + n + '</span></button>';
+        }
+        gradeAgenda.innerHTML = html;
+
+        if (animar) {
+          agenda.classList.remove('tocando');
+          void agenda.offsetWidth;
+          agenda.classList.add('tocando');
+        }
+      }
+
+      gradeAgenda.addEventListener('click', function (e) {
+        var botao = e.target.closest('.agenda__dia');
+        if (!botao || botao.disabled) return;
+        interagiu = true;
+        if (ciclo) { clearInterval(ciclo); ciclo = null; }
+        selecionada = new Date(vendo.getFullYear(), vendo.getMonth(), +botao.getAttribute('data-dia'));
+        desenhar(false);
+        aplicarEscolha();
+      });
+
+      function mudarMes(passo) {
+        interagiu = true;
+        if (ciclo) { clearInterval(ciclo); ciclo = null; }
+        vendo = new Date(vendo.getFullYear(), vendo.getMonth() + passo, 1);
+        desenhar(true);
+      }
+      btnAnterior.addEventListener('click', function () { mudarMes(-1); });
+      btnProximo.addEventListener('click', function () { mudarMes(1); });
+
+      // estado inicial: já com um dia sugerido
+      selecionada = sugestao();
+      desenhar(false);
+      aplicarEscolha();
+
+      // A animação de entrada roda enquanto ninguém mexeu no calendário
       var ciclo = null;
       function tocar() {
+        if (interagiu) return;
         agenda.classList.remove('tocando');
-        void agenda.offsetWidth;                             // força o reinício
+        void agenda.offsetWidth;
         agenda.classList.add('tocando');
       }
       if ('IntersectionObserver' in window) {
         new IntersectionObserver(function (entradas) {
           entradas.forEach(function (e) {
-            if (e.isIntersecting) {
+            if (e.isIntersecting && !interagiu) {
               tocar();
               if (!ciclo) ciclo = setInterval(tocar, 9000);
-            } else if (ciclo) {
-              clearInterval(ciclo); ciclo = null;
-            }
+            } else if (ciclo) { clearInterval(ciclo); ciclo = null; }
           });
         }, { threshold: 0.35 }).observe(agenda);
       } else {
