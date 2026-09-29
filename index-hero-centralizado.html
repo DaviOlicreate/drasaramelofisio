@@ -194,6 +194,95 @@
     details > summary::-webkit-details-marker { display: none; }
     details[open] .faq-seta { transform: rotate(180deg); }
 
+    /* ---------- Calendário ilustrativo (seção de agendamento) ---------- */
+    .agenda {
+      border: 1px solid #dde1d2; border-radius: 1.75rem; background: rgba(255,255,255,.88);
+      padding: 1.35rem 1.4rem 1.15rem; box-shadow: 0 10px 40px -14px rgba(99,85,72,.18);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    }
+    .agenda__topo { display: flex; align-items: center; justify-content: space-between; }
+    .agenda__mes {
+      font-size: .95rem; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: #4e4238;
+    }
+    .agenda__setas { display: flex; gap: .4rem; color: #b4b89f; }
+    .agenda__setas svg { height: 1rem; width: 1rem; }
+
+    .agenda__semana, .agenda__dias {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: .3rem;
+    }
+    .agenda__semana { margin-top: 1.1rem; }
+    .agenda__semana span {
+      text-align: center; font-size: .62rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: #9aa083;
+    }
+    .agenda__dias { margin-top: .5rem; }
+
+    .agenda__dia {
+      position: relative; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
+      border-radius: .7rem; font-size: .78rem; font-weight: 500; color: #736555;
+    }
+    .agenda__dia--vazio { visibility: hidden; }
+    .agenda__dia--passado { color: #cdd0bd; }
+
+    /* pontinho de horário livre */
+    .agenda__dia--livre::after {
+      content: ''; position: absolute; bottom: .3rem; left: 50%; margin-left: -2px;
+      height: 4px; width: 4px; border-radius: 999px; background: #7f866a;
+      opacity: 0; transform: scale(.4);
+    }
+    /* dia escolhido */
+    .agenda__dia--sel { color: #fff; font-weight: 700; }
+    .agenda__dia--sel::before {
+      content: ''; position: absolute; inset: 0; border-radius: .7rem;
+      background: linear-gradient(135deg, #7f866a, #4e533f); z-index: -1;
+      transform: scale(0); opacity: 0;
+    }
+    .agenda__dia--sel > span { position: relative; z-index: 1; }
+    /* anel que pulsa em volta do dia escolhido */
+    .agenda__pulso {
+      position: absolute; inset: -3px; border-radius: .85rem;
+      border: 1.5px solid #7f866a; opacity: 0;
+    }
+
+    .agenda__rodape {
+      margin-top: 1.1rem; padding-top: .9rem; border-top: 1px solid #e9e3dc;
+      display: flex; align-items: center; gap: .6rem; min-height: 2.1rem;
+    }
+    .agenda__selo {
+      display: inline-flex; align-items: center; gap: .45rem;
+      border-radius: 999px; background: #eef0e8; padding: .38rem .8rem;
+      font-size: .72rem; font-weight: 600; color: #4e533f;
+      opacity: 0; transform: translateY(6px);
+    }
+    .agenda__selo svg { height: .85rem; width: .85rem; color: #7f866a; }
+    .agenda__nota { font-size: .68rem; color: #8a7a6a; }
+
+    /* ---- a animação só roda quando a seção entra na tela ---- */
+    .agenda.tocando .agenda__dia { animation: agDia .5s cubic-bezier(.16,1,.3,1) both; animation-delay: calc(var(--i) * 26ms); }
+    .agenda.tocando .agenda__dia--livre::after { animation: agPonto .5s ease both; animation-delay: calc(900ms + var(--i) * 18ms); }
+    .agenda.tocando .agenda__dia--sel::before { animation: agSel .6s cubic-bezier(.34,1.56,.64,1) both; animation-delay: 1.75s; }
+    .agenda.tocando .agenda__pulso { animation: agPulso 1.6s ease-out .3s 2 both; animation-delay: 2.1s; }
+    .agenda.tocando .agenda__selo { animation: agSelo .6s cubic-bezier(.16,1,.3,1) both; animation-delay: 2.5s; }
+
+    @keyframes agDia { from { opacity: 0; transform: scale(.72) } to { opacity: 1; transform: none } }
+    @keyframes agPonto { to { opacity: 1; transform: scale(1) } }
+    @keyframes agSel { to { opacity: 1; transform: scale(1) } }
+    @keyframes agPulso {
+      0% { opacity: .9; transform: scale(1) }
+      100% { opacity: 0; transform: scale(1.55) }
+    }
+    @keyframes agSelo { to { opacity: 1; transform: none } }
+
+    /* sem animação: mostra o estado final */
+    @media (prefers-reduced-motion: reduce) {
+      .agenda .agenda__dia { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .agenda .agenda__dia--livre::after { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .agenda .agenda__dia--sel::before { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .agenda .agenda__selo { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .agenda .agenda__pulso { animation: none !important; }
+    }
+
     select:invalid { color: #9aa083; }
 
     /* Notebooks de tela baixa: compacta o hero para a faixa caber na primeira tela.
@@ -928,6 +1017,32 @@
             Preencha o formulário ao lado ou me mande uma mensagem direto no WhatsApp. Responder leva menos de um minuto e já me dá o contexto do caso — assim eu volto com algo útil, e não com um "oi, tudo bem?".
           </p>
 
+
+          <!-- Calendário ilustrativo: reforça que existe agenda aberta -->
+          <div class="agenda mt-10" id="agenda" role="img" aria-label="Ilustração de um calendário com dias disponíveis para avaliação">
+            <div class="agenda__topo">
+              <span class="agenda__mes" id="agenda-mes">Mês</span>
+              <span class="agenda__setas" aria-hidden="true">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.5 7.5 12l7.5-7.5"/></svg>
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4.5 16.5 12 9 19.5"/></svg>
+              </span>
+            </div>
+
+            <div class="agenda__semana" aria-hidden="true">
+              <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+            </div>
+
+            <div class="agenda__dias" id="agenda-dias" aria-hidden="true"></div>
+
+            <div class="agenda__rodape">
+              <span class="agenda__selo">
+                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                Avaliação marcada
+              </span>
+              <span class="agenda__nota">Ilustrativo &middot; o horário é confirmado no WhatsApp</span>
+            </div>
+          </div>
+
           <ul class="mt-10 space-y-5">
             <li class="flex items-start gap-4">
               <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-sand-400 bg-white/80 text-gold-600">
@@ -1346,6 +1461,85 @@
       // if (window.fbq) fbq('track', 'Lead');
       // if (window.gtag) gtag('event', 'generate_lead', { method: 'formulario_site' });
     });
+
+
+    /* ---------- CALENDÁRIO ILUSTRATIVO ---------- */
+    var agenda = document.getElementById('agenda');
+    if (agenda) {
+      var grade = document.getElementById('agenda-dias');
+      var hoje = new Date();
+      var ano = hoje.getFullYear(), mes = hoje.getMonth();
+      var meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho',
+                   'Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+      var totalDias = new Date(ano, mes + 1, 0).getDate();
+      var diaDeHoje = hoje.getDate();
+
+      // Perto do fim do mês sobram poucos dias e o calendário fica todo cinza:
+      // nesse caso mostramos o mês seguinte inteiro.
+      if (totalDias - diaDeHoje < 8) {
+        mes += 1;
+        if (mes > 11) { mes = 0; ano += 1; }
+        totalDias = new Date(ano, mes + 1, 0).getDate();
+        diaDeHoje = 0;                                       // nenhum dia passado
+      }
+
+      document.getElementById('agenda-mes').textContent = meses[mes] + ' de ' + ano;
+      var primeiroDia = new Date(ano, mes, 1).getDay();      // 0 = domingo
+
+      // o dia "escolhido" é o próximo dia útil a partir de três dias
+      var escolhido = Math.min(diaDeHoje + 3, totalDias);
+      var giro = 0;
+      while (giro < 7) {
+        var ds = new Date(ano, mes, escolhido).getDay();
+        if (ds !== 0 && ds !== 6) break;                     // nem domingo nem sábado
+        escolhido = escolhido < totalDias ? escolhido + 1 : 1;
+        giro++;
+      }
+
+      var html = '';
+      var i = 0;
+      for (var v = 0; v < primeiroDia; v++, i++) {
+        html += '<span class="agenda__dia agenda__dia--vazio" style="--i:' + i + '"></span>';
+      }
+      for (var d = 1; d <= totalDias; d++, i++) {
+        var semana = new Date(ano, mes, d).getDay();
+        var classes = 'agenda__dia';
+        var pulso = '';
+        if (d < diaDeHoje) {
+          classes += ' agenda__dia--passado';
+        } else if (d === escolhido) {
+          classes += ' agenda__dia--sel';
+          pulso = '<span class="agenda__pulso"></span>';
+        } else if (semana > 0 && semana < 6 && d > diaDeHoje) {
+          classes += ' agenda__dia--livre';                  // dia útil com horário
+        }
+        html += '<span class="' + classes + '" style="--i:' + i + '">' + pulso + '<span>' + d + '</span></span>';
+      }
+      grade.innerHTML = html;
+
+      // a animação reinicia a cada ciclo, mas só enquanto o calendário estiver visível
+      var ciclo = null;
+      function tocar() {
+        agenda.classList.remove('tocando');
+        void agenda.offsetWidth;                             // força o reinício
+        agenda.classList.add('tocando');
+      }
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entradas) {
+          entradas.forEach(function (e) {
+            if (e.isIntersecting) {
+              tocar();
+              if (!ciclo) ciclo = setInterval(tocar, 9000);
+            } else if (ciclo) {
+              clearInterval(ciclo); ciclo = null;
+            }
+          });
+        }, { threshold: 0.35 }).observe(agenda);
+      } else {
+        tocar();
+      }
+    }
 
     /* ---------- FEED DO INSTAGRAM ---------- */
     var grade = document.getElementById('instagram-grade');
