@@ -4,3 +4,5 @@
 
 # Originais pesados da sessão de fotos (~79 MB) — só os .webp vão para o site
 Sara/
+.vercel
+.env*
