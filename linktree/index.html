@@ -111,6 +111,35 @@
     }
     @keyframes girar { to { transform: rotate(360deg) } }
 
+    /* carrossel horizontal com encaixe */
+    .trilho {
+      display: flex; gap: .85rem; overflow-x: auto; scroll-snap-type: x mandatory;
+      padding: .25rem .25rem 1rem; margin-inline: -.25rem;
+      scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .trilho::-webkit-scrollbar { display: none; }
+    .trilho > * { scroll-snap-align: start; flex: 0 0 62%; min-width: 172px; }
+
+    /* quiz */
+    .quiz-abre {
+      background: linear-gradient(135deg, #4e4238 0%, #3a3129 100%);
+      box-shadow: 0 16px 38px -16px rgba(58,49,41,.6);
+    }
+    .quiz-op {
+      display: flex; width: 100%; align-items: center; justify-content: space-between;
+      gap: .75rem; border: 1px solid #dde1d2; border-radius: .9rem;
+      background: #fff; padding: .8rem .95rem; text-align: left;
+      font-size: .85rem; color: #4e4238; cursor: pointer;
+      transition: border-color .25s, background .25s, transform .25s;
+    }
+    .quiz-op:hover { border-color: #b4b89f; background: #f9f7f4; transform: translateX(2px); }
+    .quiz-op:focus-visible { outline: 2px solid #666c54; outline-offset: 2px; }
+    .quiz-op svg { height: .9rem; width: .9rem; color: #9aa083; flex: none; }
+
+    .quiz-passo { display: flex; gap: .3rem; margin-bottom: 1rem; }
+    .quiz-passo span { height: 3px; flex: 1; border-radius: 999px; background: #dde1d2; transition: background .3s; }
+    .quiz-passo span.feito { background: #666c54; }
+
     details > summary { list-style: none; cursor: pointer; }
     details > summary::-webkit-details-marker { display: none; }
     details[open] .seta { transform: rotate(180deg); }
@@ -208,6 +237,39 @@
       </span>
       <svg class="h-5 w-5 opacity-70 transition-transform duration-300 group-hover:translate-x-1 group-hover:opacity-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     </a>
+
+    <!-- ============ QUIZ ============ -->
+    <section class="sobe mb-8 w-full" style="--d: 160ms">
+      <button type="button" id="quiz-abrir" class="quiz-abre group flex w-full items-center justify-between rounded-[1.15rem] p-4 text-left text-white transition">
+        <span class="flex items-center gap-4">
+          <span class="rounded-xl bg-white/15 p-2">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg>
+          </span>
+          <span>
+            <span class="block text-[15px] font-semibold">Não sabe se é caso para fisioterapia?</span>
+            <span class="block text-[11px] opacity-85">Responda 3 perguntas e eu te digo como posso ajudar.</span>
+          </span>
+        </span>
+        <svg id="quiz-chevron" class="h-5 w-5 opacity-70 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+      </button>
+
+      <div id="quiz-painel" class="cartao mt-3 p-5" hidden>
+        <div class="quiz-passo" id="quiz-progresso" aria-hidden="true"><span></span><span></span><span></span></div>
+        <p id="quiz-pergunta" class="mb-4 text-[15px] font-semibold text-bark-800">&nbsp;</p>
+        <div id="quiz-opcoes" class="flex flex-col gap-2.5"></div>
+
+        <div id="quiz-resultado" hidden>
+          <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-sage-700">O que eu recomendo</p>
+          <p id="quiz-texto" class="mt-3 text-sm leading-relaxed text-bark-600"></p>
+          <a href="#" id="quiz-cta" class="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-sage-700 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-sage-800">
+            Falar com a Sara sobre isso
+          </a>
+          <button type="button" id="quiz-refazer" class="mt-3 w-full text-center text-[12px] font-medium text-bark-500 underline-offset-4 hover:underline">
+            Refazer
+          </button>
+        </div>
+      </div>
+    </section>
 
     <!-- ============ ÁREAS ============ -->
     <section class="mb-8 w-full">
@@ -349,6 +411,20 @@
       </div>
     </section>
 
+    <!-- ============ INSTAGRAM ============ -->
+    <section class="sobe mb-8 w-full" style="--d: 660ms">
+      <h2 class="mb-4 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-sage-700">
+        <span class="text-gold-500">&#9656;</span> @fisio.saramello
+      </h2>
+
+      <div class="trilho" id="ig-trilho"></div>
+
+      <a href="https://www.instagram.com/fisio.saramello/" target="_blank" rel="noopener noreferrer"
+         class="cartao mt-1 flex items-center justify-center gap-2 rounded-full py-3 text-[13px] font-semibold text-bark-800">
+        Ver perfil no Instagram
+      </a>
+    </section>
+
     <!-- ============ RODAPÉ ============ -->
     <footer class="sobe flex flex-col items-center text-center" style="--d: 680ms">
       <span class="titulo text-lg text-bark-800">Dra. Sara Melo</span>
@@ -388,6 +464,124 @@
         duvidas.forEach(function (outra) { if (outra !== d) outra.open = false; });
       });
     });
+
+
+    /* ---------------- QUIZ DE TRIAGEM ---------------- */
+    var btnQuiz = document.getElementById('quiz-abrir');
+    if (btnQuiz) {
+      var painel = document.getElementById('quiz-painel');
+      var chevron = document.getElementById('quiz-chevron');
+      var elPergunta = document.getElementById('quiz-pergunta');
+      var elOpcoes = document.getElementById('quiz-opcoes');
+      var elResultado = document.getElementById('quiz-resultado');
+      var elTexto = document.getElementById('quiz-texto');
+      var elCta = document.getElementById('quiz-cta');
+      var elProgresso = document.getElementById('quiz-progresso');
+
+      var PERGUNTAS = [
+        { p: 'Para quem é o atendimento?', ops: [
+            { t: 'Para meu pai ou minha mãe', v: 'pai_mae', f: 'meu pai ou minha mãe' },
+            { t: 'Para meu avô ou minha avó', v: 'avos',    f: 'meu avô ou minha avó' },
+            { t: 'Para o meu cônjuge',        v: 'conjuge', f: 'meu cônjuge' },
+            { t: 'Para mim mesmo(a)',         v: 'proprio', f: 'mim mesmo(a)' } ] },
+        { p: 'O que está acontecendo?', ops: [
+            { t: 'Teve um AVC e ficou com sequelas', v: 'avc',       f: 'sequela de AVC' },
+            { t: 'Tem doença de Parkinson',          v: 'parkinson', f: 'doença de Parkinson' },
+            { t: 'Perdeu força e equilíbrio',        v: 'fraqueza',  f: 'perda de força e equilíbrio' },
+            { t: 'Já caiu em casa',                  v: 'queda',     f: 'queda em casa' },
+            { t: 'Está acamado',                     v: 'acamado',   f: 'paciente acamado' } ] },
+        { p: 'Faz fisioterapia hoje?', ops: [
+            { t: 'Nunca fez',                                 v: 'nunca',   f: 'nunca fez fisioterapia' },
+            { t: 'Fazia e parou',                             v: 'parou',   f: 'fazia fisioterapia e parou' },
+            { t: 'Faz na clínica, mas o deslocamento é difícil', v: 'clinica', f: 'hoje faz na clínica, mas o deslocamento é difícil' } ] }
+      ];
+
+      var RESULTADOS = {
+        avc:       'Reabilitação neurológica pós-AVC. O trabalho é recuperar movimento, equilíbrio e as tarefas do dia a dia — e quanto mais cedo começa, melhor costuma ser o resultado.',
+        parkinson: 'Fisioterapia para doença de Parkinson: marcha, postura e rigidez. O objetivo é manter a pessoa ativa e independente pelo maior tempo possível.',
+        fraqueza:  'Fisioterapia geriátrica com foco em fortalecimento. Perder força não é "coisa da idade" — é sinal de que precisa de trabalho direcionado.',
+        queda:     'Prevenção de quedas com treino de equilíbrio, mais a adaptação do ambiente da casa. Uma queda em idoso raramente é só um susto.',
+        acamado:   'Cuidados para o paciente acamado: preservar amplitude, circulação e conforto, e prevenir as complicações da imobilidade.'
+      };
+
+      var passo = 0, respostas = [], frases = [];
+
+      function marcarProgresso() {
+        [].forEach.call(elProgresso.children, function (b, i) {
+          b.classList.toggle('feito', i < passo);
+        });
+      }
+
+      function render() {
+        marcarProgresso();
+        if (passo < PERGUNTAS.length) {
+          elResultado.hidden = true;
+          elPergunta.hidden = false;
+          elOpcoes.hidden = false;
+          elPergunta.textContent = PERGUNTAS[passo].p;
+          elOpcoes.innerHTML = PERGUNTAS[passo].ops.map(function (o) {
+            return '<button type="button" class="quiz-op" data-v="' + o.v + '" data-f="' + o.f + '"><span>' + o.t + '</span>' +
+                   '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>';
+          }).join('');
+          return;
+        }
+        // resultado
+        elPergunta.hidden = true;
+        elOpcoes.hidden = true;
+        elResultado.hidden = false;
+        [].forEach.call(elProgresso.children, function (b) { b.classList.add('feito'); });
+
+        var condicao = respostas[1];
+        elTexto.textContent = RESULTADOS[condicao] || 'Me conte um pouco mais sobre o caso que eu te oriento sobre o melhor caminho.';
+        elCta.setAttribute('href', url(
+          WHATSAPP_MESSAGE + ' Respondi o quiz do seu link: o atendimento é para ' + frases[0] +
+          ', a situação é ' + frases[1] + ' e ' + frases[2] + '.'));
+        elCta.setAttribute('target', '_blank');
+        elCta.setAttribute('rel', 'noopener noreferrer');
+      }
+
+      btnQuiz.addEventListener('click', function () {
+        var abrindo = painel.hidden;
+        painel.hidden = !abrindo;
+        chevron.style.transform = abrindo ? 'rotate(180deg)' : '';
+        if (abrindo && passo === 0 && !respostas.length) render();
+      });
+
+      elOpcoes.addEventListener('click', function (e) {
+        var op = e.target.closest('.quiz-op');
+        if (!op) return;
+        respostas[passo] = op.getAttribute('data-v');
+        frases[passo] = op.getAttribute('data-f');
+        passo++;
+        render();
+      });
+
+      document.getElementById('quiz-refazer').addEventListener('click', function () {
+        passo = 0; respostas = []; frases = []; render();
+      });
+    }
+
+    /* ---------------- CARROSSEL DO INSTAGRAM ---------------- */
+    var POSTS = ['DRADWLKgHfV', 'DbgEdx-xIKD', 'DTKx8_EkeD0', 'DTQQBdQEaX6', 'DMAPNqbgtCC', 'DRmbAqnEbrI'];
+    var trilho = document.getElementById('ig-trilho');
+
+    function montarIG() {
+      trilho.innerHTML = POSTS.map(function (c) {
+        return '<div class="overflow-hidden rounded-2xl border border-sand-300 bg-white shadow-[0_10px_30px_-18px_rgba(99,85,72,.45)]">' +
+                 '<iframe src="https://www.instagram.com/p/' + c + '/embed/" title="Publicação de @fisio.saramello no Instagram" ' +
+                 'class="block h-[300px] w-full border-0" loading="lazy" scrolling="no"></iframe>' +
+               '</div>';
+      }).join('');
+    }
+
+    if (trilho) {
+      if ('IntersectionObserver' in window) {
+        var obsIG = new IntersectionObserver(function (es) {
+          if (es.some(function (e) { return e.isIntersecting; })) { montarIG(); obsIG.disconnect(); }
+        }, { rootMargin: '500px 0px' });
+        obsIG.observe(trilho);
+      } else { montarIG(); }
+    }
 
     document.getElementById('ano').textContent = new Date().getFullYear();
   })();
