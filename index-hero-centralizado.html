@@ -195,6 +195,27 @@
     details[open] .faq-seta { transform: rotate(180deg); }
 
     /* ---------- Calendário ilustrativo (seção de agendamento) ---------- */
+    [hidden] { display: none !important; }
+
+    /* ---------- agendamento pelo Google Calendar ---------- */
+    .agenda-google__topo { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .7rem; }
+    .agenda-google__rotulo {
+      font-size: .68rem; font-weight: 600; letter-spacing: .18em;
+      text-transform: uppercase; color: #8a7f72;
+    }
+    .agenda-google__externo {
+      display: inline-flex; align-items: center; gap: .35rem; flex: none;
+      font-size: .78rem; font-weight: 600; color: #8a6d2f;
+    }
+    .agenda-google__externo:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .agenda-google__externo svg { height: .8rem; width: .8rem; }
+    .agenda-google__moldura {
+      border: 1px solid #dde1d2; border-radius: 1.75rem; background: #fff;
+      box-shadow: 0 10px 40px -14px rgba(99,85,72,.18); overflow: hidden;
+    }
+    .agenda-google__moldura iframe { display: block; width: 100%; height: 660px; border: 0; }
+    @media (min-width: 1024px) { .agenda-google__moldura iframe { height: 600px; } }
+
     .agenda {
       border: 1px solid #dde1d2; border-radius: 1.75rem; background: rgba(255,255,255,.88);
       padding: 1.35rem 1.4rem 1.15rem; box-shadow: 0 10px 40px -14px rgba(99,85,72,.18);
@@ -1044,7 +1065,7 @@
           </h2>
 
           <p class="mt-8 text-base leading-[1.85] text-bark-600">
-            Preencha o formulário ao lado ou me mande uma mensagem direto no WhatsApp. Responder leva menos de um minuto e já me dá o contexto do caso — assim eu volto com algo útil, e não com um "oi, tudo bem?".
+            <span id="intro-form">Preencha o formulário ao lado ou me mande uma mensagem direto no WhatsApp. Responder leva menos de um minuto e já me dá o contexto do caso — assim eu volto com algo útil, e não com um "oi, tudo bem?".</span><span id="intro-google" hidden>Escolha um horário no calendário abaixo e a avaliação já fica marcada. Se preferir me contar o caso antes, use o formulário ao lado ou o WhatsApp — responder leva menos de um minuto e já me dá o contexto.</span>
           </p>
 
 
@@ -1081,6 +1102,24 @@
               </a>
             </div>
             <p class="agenda__nota mt-2">Atendo de segunda a sexta. O horário do dia é combinado no WhatsApp.</p>
+          </div>
+
+          <!-- Agendamento pelo Google Calendar.
+               Para ligar: cole em AGENDA_GOOGLE (no script, perto do WHATSAPP_NUMBER) o link da
+               página de agendamento que o Google gera. Com o campo vazio, fica valendo o
+               calendário de preferência de dia que vai pelo WhatsApp. -->
+          <div class="agenda-google mt-10" id="agenda-google" hidden>
+            <div class="agenda-google__topo">
+              <span class="agenda-google__rotulo">Escolha o horário da avaliação</span>
+              <a href="#" id="agenda-google-link" target="_blank" rel="noopener noreferrer" class="agenda-google__externo">
+                Abrir em tela cheia
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+              </a>
+            </div>
+            <div class="agenda-google__moldura">
+              <iframe id="agenda-google-frame" title="Escolher horário para a avaliação com a Dra. Sara Melo" loading="lazy"></iframe>
+            </div>
+            <p class="agenda__nota mt-3">O horário escolhido já entra na agenda da Sara e você recebe a confirmação por e-mail. Se preferir conversar antes de marcar, é só chamar no WhatsApp.</p>
           </div>
 
           <ul class="mt-10 space-y-5">
@@ -1345,6 +1384,11 @@
     'use strict';
 
     /* ---------- CONFIGURAÇÕES ---------- */
+    /* Página de agendamento do Google Calendar.
+       Cole aqui o link que o Google dá em "Compartilhar → Incorporar" ou "Copiar link".
+       Vazio = segue valendo o calendário de preferência de dia, que vai pelo WhatsApp. */
+    var AGENDA_GOOGLE = '';
+
     var WHATSAPP_NUMBER = '5582998427638';
     var WHATSAPP_MESSAGE = 'Olá, Sara! Vim pelo site e gostaria de agendar uma avaliação.';
 
@@ -1510,7 +1554,28 @@
 
 
     /* ---------- CALENDÁRIO: escolha do dia de preferência ---------- */
-    var agenda = document.getElementById('agenda');
+
+    /* ---------------- AGENDAMENTO PELO GOOGLE CALENDAR ---------------- */
+    var blocoGoogle = document.getElementById('agenda-google');
+    var usaGoogle = !!AGENDA_GOOGLE && !!blocoGoogle;
+
+    if (usaGoogle) {
+      var agendaPropria = document.getElementById('agenda');
+      if (agendaPropria) agendaPropria.hidden = true;
+      var introForm = document.getElementById('intro-form');
+      var introGoogle = document.getElementById('intro-google');
+      if (introForm && introGoogle) { introForm.hidden = true; introGoogle.hidden = false; }
+
+      blocoGoogle.hidden = false;
+      document.getElementById('agenda-google-link').href = AGENDA_GOOGLE;
+
+      /* o loading="lazy" do próprio iframe adia a carga até a seção se aproximar da tela.
+         Nada de IntersectionObserver aqui: se ele não disparar, o agendamento não abre. */
+      var quadro = document.getElementById('agenda-google-frame');
+      quadro.src = AGENDA_GOOGLE + (AGENDA_GOOGLE.indexOf('?') > -1 ? '&' : '?') + 'gv=true';
+    }
+
+    var agenda = usaGoogle ? null : document.getElementById('agenda');
     var dataEscolhida = null;                                // vira texto e entra na mensagem
 
     if (agenda) {
