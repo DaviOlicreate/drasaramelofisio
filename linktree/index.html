@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#eef0e8" />
+  <meta name="theme-color" content="#f4f0ed" />
 
   <title>Dra. Sara Melo — Links</title>
   <meta name="description" content="Todos os links da Dra. Sara Melo — fisioterapia domiciliar para idosos em Arapiraca - AL. Reabilitação pós-AVC, Parkinson e geriatria." />
@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -30,16 +30,14 @@
       theme: {
         extend: {
           colors: {
-            sand: { 50:'#fdfcfb',100:'#f9f7f4',200:'#f4f0ed',300:'#e9e3dc',400:'#d8cfc4' },
-            sage: { 100:'#eef0e8',200:'#dde1d2',300:'#cdd0bd',400:'#b4b89f',500:'#9aa083',600:'#7f866a',700:'#666c54',800:'#4e533f' },
-            gold: { 100:'#fff8e5',300:'#e0c79a',400:'#c2a068',500:'#a37c3a',700:'#69481d' },
-            bark: { 400:'#8a7a6a',500:'#736555',600:'#635548',700:'#4e4238',800:'#3a3129' },
-            whats:{ DEFAULT:'#25D366', dark:'#1ebe5a' },
+            sand:{50:'#fdfcfb',100:'#f9f7f4',200:'#f4f0ed',300:'#e9e3dc',400:'#d8cfc4'},
+            sage:{100:'#eef0e8',200:'#dde1d2',300:'#cdd0bd',400:'#b4b89f',500:'#9aa083',600:'#7f866a',700:'#666c54',800:'#4e533f'},
+            gold:{100:'#fff8e5',300:'#e0c79a',400:'#c2a068',500:'#a37c3a',700:'#69481d'},
+            bark:{400:'#8a7a6a',500:'#736555',600:'#635548',700:'#4e4238',800:'#3a3129'},
           },
-          fontFamily: { sans: ['Montserrat','system-ui','-apple-system','sans-serif'] },
-          boxShadow: {
-            soft: '0 10px 40px -14px rgba(99, 85, 72, 0.18)',
-            card: '0 20px 50px -22px rgba(99, 85, 72, 0.34)',
+          fontFamily: {
+            sans:  ['Montserrat','system-ui','-apple-system','sans-serif'],
+            serif: ['"Cormorant Garamond"','Georgia','serif'],
           },
         },
       },
@@ -48,70 +46,68 @@
 
   <style>
     :root { color-scheme: light; }
-    body { background-color: #eef0e8; }
-    ::selection { background: #b4b89f; color: #3a3129; }
+    body { background-color: #f4f0ed; }
+    ::selection { background: #e0c79a; color: #3a3129; }
 
-    .titulo { font-weight: 300; letter-spacing: .04em; line-height: 1.14; }
-    .titulo strong { font-weight: 600; }
+    /* ---------- topo: foto que se dissolve no fundo ---------- */
+    .topo { position: relative; }
+    .topo__foto {
+      position: relative; height: 330px; overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom, #000 38%, rgba(0,0,0,.55) 70%, transparent 100%);
+              mask-image: linear-gradient(to bottom, #000 38%, rgba(0,0,0,.55) 70%, transparent 100%);
+    }
+    .topo__foto img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+    .topo__veu {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(244,240,237,.1) 0%, rgba(244,240,237,.35) 55%, rgba(244,240,237,.9) 100%);
+    }
 
-    /* Brilho de fundo */
-    .brilho {
-      position: fixed; top: -22%; left: 50%; transform: translateX(-50%);
-      width: 780px; height: 780px; pointer-events: none; z-index: -1;
-      background: radial-gradient(circle, rgba(180,184,159,.55) 0%, rgba(238,240,232,0) 62%);
-    }
-    .brilho--baixo {
-      top: auto; bottom: -26%;
-      background: radial-gradient(circle, rgba(224,199,154,.3) 0%, rgba(238,240,232,0) 62%);
-    }
+    /* filete dourado */
+    .filete { height: 1px; background: linear-gradient(90deg, transparent, #c2a068, transparent); }
 
-    /* Cartão de link */
-    .cartao {
-      position: relative; overflow: hidden;
-      border: 1px solid #dde1d2; border-radius: 1.15rem;
-      background: rgba(255,255,255,.78);
-      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px -18px rgba(99,85,72,.45);
-      transition: transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s, border-color .45s, background .45s;
+    /* ---------- botão em pílula com medalhão ---------- */
+    .pilula {
+      position: relative; display: flex; align-items: center;
+      min-height: 62px; padding: 0 22px 0 76px;
+      border: 1px solid #e0c79a; border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      box-shadow: 0 6px 22px -14px rgba(99,85,72,.5);
+      transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s, background .4s, border-color .4s;
     }
-    .cartao:hover, .cartao:focus-visible {
-      transform: translateY(-4px); background: #fff; border-color: #b4b89f;
-      box-shadow: 0 22px 45px -20px rgba(99,85,72,.5);
+    .pilula:hover, .pilula:focus-visible {
+      transform: translateY(-3px); background: #fff; border-color: #a37c3a;
+      box-shadow: 0 16px 34px -18px rgba(99,85,72,.6);
     }
-    .cartao::after {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.8) 50%, transparent 62%);
-      transform: translateX(-130%); transition: transform .9s cubic-bezier(.16,1,.3,1);
+    .pilula:focus-visible { outline: 2px solid #666c54; outline-offset: 4px; }
+    .pilula__medalhao {
+      position: absolute; left: -1px; top: 50%; transform: translateY(-50%);
+      display: grid; place-items: center; height: 62px; width: 62px;
+      border-radius: 999px; background: #4e4238; color: #f4f0ed;
+      box-shadow: 0 6px 18px -8px rgba(58,49,41,.7);
+      transition: background .4s;
     }
-    .cartao:hover::after, .cartao:focus-visible::after { transform: translateX(130%); }
-    .cartao:focus-visible { outline: 2px solid #666c54; outline-offset: 3px; }
+    .pilula:hover .pilula__medalhao { background: #666c54; }
+    .pilula__medalhao svg { height: 22px; width: 22px; }
+    .pilula__rotulo {
+      font-size: 12.5px; font-weight: 500; letter-spacing: .16em;
+      text-transform: uppercase; color: #4e4238;
+    }
+    .pilula__nota { display: block; margin-top: 2px; font-size: 10.5px; letter-spacing: .04em;
+      text-transform: none; color: #8a7a6a; }
 
-    /* Botão principal */
-    .destaque {
-      background: linear-gradient(135deg, #7f866a 0%, #4e533f 100%);
-      box-shadow: 0 16px 38px -14px rgba(78,83,63,.65);
+    /* destaque do principal */
+    .pilula--destaque {
+      background: linear-gradient(135deg, #4e533f 0%, #3a3129 100%);
+      border-color: #a37c3a;
     }
-    .destaque:hover { background: linear-gradient(135deg, #8d947a 0%, #434735 100%); }
-    .destaque::before {
-      content: ''; position: absolute; inset: -2px; border-radius: inherit; z-index: -1;
-      background: linear-gradient(135deg, #e0c79a, #b4b89f);
-      opacity: .5; filter: blur(9px); animation: respirar 3.4s ease-in-out infinite;
-    }
-    @keyframes respirar { 0%,100% { opacity:.3 } 50% { opacity:.65 } }
+    .pilula--destaque:hover { background: linear-gradient(135deg, #5a6049 0%, #332b24 100%); }
+    .pilula--destaque .pilula__rotulo { color: #f9f7f4; }
+    .pilula--destaque .pilula__nota { color: rgba(249,247,244,.72); }
+    .pilula--destaque .pilula__medalhao { background: #c2a068; color: #3a3129; }
+    .pilula--destaque:hover .pilula__medalhao { background: #e0c79a; }
 
-    /* Entrada escalonada */
-    .sobe { opacity: 0; transform: translateY(18px); }
-    .js .sobe { animation: subir .7s cubic-bezier(.16,1,.3,1) forwards; animation-delay: var(--d, 0ms); }
-    @keyframes subir { to { opacity: 1; transform: none } }
-
-    /* Anel do avatar */
-    .anel {
-      background: conic-gradient(from 140deg, #e0c79a, #666c54, #b4b89f, #a37c3a, #e0c79a);
-      animation: girar 15s linear infinite;
-    }
-    @keyframes girar { to { transform: rotate(360deg) } }
-
-    /* carrossel horizontal com encaixe */
+    /* ---------- carrossel ---------- */
     .trilho {
       display: flex; gap: .85rem; overflow-x: auto; scroll-snap-type: x mandatory;
       padding: .25rem .25rem 1rem; margin-inline: -.25rem;
@@ -120,471 +116,424 @@
     .trilho::-webkit-scrollbar { display: none; }
     .trilho > * { scroll-snap-align: start; flex: 0 0 62%; min-width: 172px; }
 
-    /* quiz */
-    .quiz-abre {
-      background: linear-gradient(135deg, #4e4238 0%, #3a3129 100%);
-      box-shadow: 0 16px 38px -16px rgba(58,49,41,.6);
-    }
+    /* ---------- quiz ---------- */
     .quiz-op {
       display: flex; width: 100%; align-items: center; justify-content: space-between;
-      gap: .75rem; border: 1px solid #dde1d2; border-radius: .9rem;
-      background: #fff; padding: .8rem .95rem; text-align: left;
+      gap: .75rem; border: 1px solid #e9e3dc; border-radius: 999px;
+      background: #fff; padding: .78rem 1.1rem; text-align: left;
       font-size: .85rem; color: #4e4238; cursor: pointer;
       transition: border-color .25s, background .25s, transform .25s;
     }
-    .quiz-op:hover { border-color: #b4b89f; background: #f9f7f4; transform: translateX(2px); }
+    .quiz-op:hover { border-color: #c2a068; background: #fdfcfb; transform: translateX(2px); }
     .quiz-op:focus-visible { outline: 2px solid #666c54; outline-offset: 2px; }
-    .quiz-op svg { height: .9rem; width: .9rem; color: #9aa083; flex: none; }
-
+    .quiz-op svg { height: .85rem; width: .85rem; color: #c2a068; flex: none; }
     .quiz-passo { display: flex; gap: .3rem; margin-bottom: 1rem; }
-    .quiz-passo span { height: 3px; flex: 1; border-radius: 999px; background: #dde1d2; transition: background .3s; }
-    .quiz-passo span.feito { background: #666c54; }
+    .quiz-passo span { height: 2px; flex: 1; border-radius: 999px; background: #e9e3dc; transition: background .3s; }
+    .quiz-passo span.feito { background: #c2a068; }
+
+    /* ---------- cartão neutro ---------- */
+    .cartao {
+      border: 1px solid #e9e3dc; border-radius: 1.25rem; background: rgba(255,255,255,.72);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      box-shadow: 0 8px 26px -18px rgba(99,85,72,.45);
+    }
 
     details > summary { list-style: none; cursor: pointer; }
     details > summary::-webkit-details-marker { display: none; }
     details[open] .seta { transform: rotate(180deg); }
 
+    /* entrada escalonada */
+    .sobe { opacity: 0; transform: translateY(16px); }
+    .js .sobe { animation: subir .7s cubic-bezier(.16,1,.3,1) forwards; animation-delay: var(--d, 0ms); }
+    @keyframes subir { to { opacity: 1; transform: none } }
+
     @media (prefers-reduced-motion: reduce) {
       .js .sobe { animation: none; opacity: 1; transform: none; }
-      .anel, .destaque::before { animation: none; }
-      .cartao, .cartao::after { transition: none; }
+      .pilula, .quiz-op { transition: none; }
     }
   </style>
   <script>document.documentElement.classList.add('js');</script>
 </head>
 
-<body class="flex min-h-screen flex-col items-center bg-sage-100 px-5 py-12 font-sans text-bark-700 antialiased">
+<body class="min-h-screen bg-sand-200 font-sans text-bark-700 antialiased">
 
-  <div class="brilho" aria-hidden="true"></div>
-  <div class="brilho brilho--baixo" aria-hidden="true"></div>
+<main class="mx-auto w-full max-w-md pb-14">
 
-  <main class="relative z-10 mx-auto flex w-full max-w-md flex-col items-center">
+  <!-- ============ TOPO ============ -->
+  <header class="topo">
+    <div class="topo__foto">
+      <img src="/linktree/topo.webp" alt="Dra. Sara Melo" width="1100" height="1100" fetchpriority="high" />
+      <span class="topo__veu" aria-hidden="true"></span>
+    </div>
 
-    <!-- ============ PERFIL ============ -->
-    <header class="sobe mb-8 flex flex-col items-center text-center" style="--d: 0ms">
-      <div class="relative mb-5 h-32 w-32">
-        <span class="anel absolute inset-0 rounded-full" aria-hidden="true"></span>
-        <div class="absolute inset-[3px] overflow-hidden rounded-full bg-white p-[3px]">
-          <img src="/linktree/avatar.webp" alt="Dra. Sara Melo"
-               class="h-full w-full rounded-full object-cover object-center" width="640" height="640" />
-        </div>
-      </div>
-
-      <h1 class="titulo text-[1.75rem] text-bark-800">Dra. Sara Melo</h1>
-      <p class="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-sage-700">Fisioterapia domiciliar</p>
-      <!-- INSERIR O CREFITO AQUI quando a Sara enviar -->
-
-      <p class="mt-4 max-w-xs text-sm font-light leading-relaxed text-bark-600">
-        Reabilitação pós-AVC, Parkinson e fisioterapia para idosos — na casa do paciente.<br />
-        Arapiraca&nbsp;–&nbsp;AL e região.
+    <div class="sobe -mt-16 px-7 text-center" style="--d: 60ms">
+      <!-- Quando a logomarca chegar, troque este bloco por <img src="/linktree/logo.webp" class="mx-auto h-20"> -->
+      <h1 class="font-serif text-[2.6rem] font-light leading-none tracking-[0.06em] text-bark-800">
+        Dra. Sara Melo
+      </h1>
+      <p class="mt-3 text-[10px] font-medium uppercase tracking-[0.34em] text-sage-600">
+        Fisioterapia domiciliar
       </p>
-    </header>
 
-    <!-- ============ REDES ============ -->
-    <nav class="sobe mb-8 flex items-start justify-center gap-1" style="--d: 70ms" aria-label="Redes">
-      <a href="https://www.instagram.com/fisio.saramello/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="group flex w-[62px] flex-col items-center gap-1.5">
-        <span class="cartao flex h-12 w-12 items-center justify-center rounded-full text-sage-700 transition group-hover:-translate-y-0.5">
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.8 3.8 0 0 1-1.38-.9 3.8 3.8 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.98c-3.14 0-3.51.01-4.75.07-1.15.05-1.77.24-2.18.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.35 1.03-.4 2.18-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.05 1.15.24 1.77.4 2.18.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.35 2.18.4 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c1.15-.05 1.77-.24 2.18-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.35-1.03.4-2.18.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.05-1.15-.24-1.77-.4-2.18a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.35-2.18-.4-1.24-.06-1.61-.07-4.75-.07Zm0 3.37a4.49 4.49 0 1 1 0 8.98 4.49 4.49 0 0 1 0-8.98Zm0 7.4a2.91 2.91 0 1 0 0-5.82 2.91 2.91 0 0 0 0 5.82Zm5.72-7.6a1.05 1.05 0 1 1-2.1 0 1.05 1.05 0 0 1 2.1 0Z"/></svg>
-        </span>
-        <span class="text-[10px] font-medium leading-none text-bark-600">Instagram</span>
-      </a>
+      <div class="filete mx-auto mt-5 w-40"></div>
 
-      <a href="#" data-whatsapp aria-label="WhatsApp" class="group flex w-[62px] flex-col items-center gap-1.5">
-        <span class="cartao flex h-12 w-12 items-center justify-center rounded-full text-sage-700 transition group-hover:-translate-y-0.5">
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.06c-.25.69-1.44 1.32-2 1.4-.51.08-1.15.11-1.86-.12-.43-.13-.98-.31-1.69-.62-2.98-1.29-4.92-4.29-5.07-4.49-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37.2 0 .39 0 .57.01.18.01.42-.07.66.5.25.6.84 2.06.91 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.71.81 2.01.96.3.15.5.22.57.35.07.12.07.72-.18 1.41Z"/></svg>
-        </span>
-        <span class="text-[10px] font-medium leading-none text-bark-600">WhatsApp</span>
-      </a>
+      <p class="mt-5 font-serif text-[1.55rem] font-light italic leading-tight text-gold-700">
+        Seja bem-vindo(a)!
+      </p>
+      <p class="mt-1.5 text-[10px] font-medium uppercase tracking-[0.26em] text-bark-400">
+        Toque para interagir
+      </p>
+    </div>
+  </header>
 
-      <!-- INSERIR O LINK DE AVALIAÇÃO DO GOOGLE (g.page/r/.../review) quando o perfil estiver criado -->
-      <a href="#" data-whatsapp data-message="Olá, Sara! Fui atendido(a) por você e gostaria de deixar uma avaliação." aria-label="Avaliar no Google" class="group flex w-[62px] flex-col items-center gap-1.5">
-        <span class="cartao flex h-12 w-12 items-center justify-center rounded-full transition group-hover:-translate-y-0.5">
-          <svg class="h-5 w-5" viewBox="0 0 48 48" aria-hidden="true">
-            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-          </svg>
-        </span>
-        <span class="text-[10px] font-medium leading-none text-bark-600">Avaliar</span>
-      </a>
-
-      <a href="/" aria-label="Site oficial" class="group flex w-[62px] flex-col items-center gap-1.5">
-        <span class="cartao flex h-12 w-12 items-center justify-center rounded-full text-sage-700 transition group-hover:-translate-y-0.5">
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3 7.5 7.03 7.5 12s2.015 9 4.5 9ZM3.6 9h16.8M3.6 15h16.8"/></svg>
-        </span>
-        <span class="text-[10px] font-medium leading-none text-bark-600">Site</span>
-      </a>
-
-      <a href="mailto:Dr.saramello@gmail.com" aria-label="E-mail" class="group flex w-[62px] flex-col items-center gap-1.5">
-        <span class="cartao flex h-12 w-12 items-center justify-center rounded-full text-sage-700 transition group-hover:-translate-y-0.5">
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
-        </span>
-        <span class="text-[10px] font-medium leading-none text-bark-600">E-mail</span>
-      </a>
-    </nav>
-
-    <!-- ============ CTA PRINCIPAL ============ -->
-    <a href="#" data-whatsapp class="destaque sobe group relative isolate mb-8 flex w-full items-center justify-between rounded-[1.15rem] p-4 text-white transition-all duration-300" style="--d: 130ms">
-      <span class="flex items-center gap-4">
-        <span class="rounded-xl bg-white/15 p-2">
-          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.06c-.25.69-1.44 1.32-2 1.4-.51.08-1.15.11-1.86-.12-.43-.13-.98-.31-1.69-.62-2.98-1.29-4.92-4.29-5.07-4.49-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37.2 0 .39 0 .57.01.18.01.42-.07.66.5.25.6.84 2.06.91 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.71.81 2.01.96.3.15.5.22.57.35.07.12.07.72-.18 1.41Z"/></svg>
-        </span>
-        <span class="text-left">
-          <span class="block text-base font-semibold">Agendar uma avaliação</span>
-          <span class="block text-[11px] opacity-90">WhatsApp (82) 99842-7638</span>
-        </span>
+  <!-- ============ PERGUNTA QUALIFICADORA ============ -->
+  <section class="sobe mt-9 px-7" style="--d: 130ms">
+    <button type="button" id="quiz-abrir"
+            class="pilula pilula--destaque w-full text-left">
+      <span class="pilula__medalhao" aria-hidden="true">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg>
       </span>
-      <svg class="h-5 w-5 opacity-70 transition-transform duration-300 group-hover:translate-x-1 group-hover:opacity-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      <span class="flex-1">
+        <span class="pilula__rotulo">Por onde começar</span>
+        <span class="pilula__nota">3 perguntas rápidas e eu te oriento</span>
+      </span>
+      <svg id="quiz-chevron" class="h-4 w-4 shrink-0 text-gold-300 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+    </button>
+
+    <div id="quiz-painel" class="cartao mt-3 p-5" hidden>
+      <div class="quiz-passo" id="quiz-progresso" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p id="quiz-pergunta" class="mb-4 text-[15px] font-medium text-bark-800">&nbsp;</p>
+      <div id="quiz-opcoes" class="flex flex-col gap-2.5"></div>
+
+      <div id="quiz-resultado" hidden>
+        <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-500">O que eu recomendo</p>
+        <p id="quiz-texto" class="mt-3 text-sm leading-relaxed text-bark-600"></p>
+        <a href="#" id="quiz-cta" class="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-sage-700 px-5 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition hover:bg-sage-800">
+          Falar com a Sara
+        </a>
+        <button type="button" id="quiz-refazer" class="mt-3 w-full text-center text-[12px] text-bark-400 underline-offset-4 hover:underline">
+          Refazer
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LINKS ============ -->
+  <nav class="mt-4 flex flex-col gap-3.5 px-7" aria-label="Links">
+
+    <a href="#" data-whatsapp class="pilula sobe" style="--d: 200ms">
+      <span class="pilula__medalhao" aria-hidden="true">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.06c-.25.69-1.44 1.32-2 1.4-.51.08-1.15.11-1.86-.12-.43-.13-.98-.31-1.69-.62-2.98-1.29-4.92-4.29-5.07-4.49-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37.2 0 .39 0 .57.01.18.01.42-.07.66.5.25.6.84 2.06.91 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.71.81 2.01.96.3.15.5.22.57.35.07.12.07.72-.18 1.41Z"/></svg>
+      </span>
+      <span class="flex-1">
+        <span class="pilula__rotulo">Agendar avaliação</span>
+        <span class="pilula__nota">WhatsApp (82) 99842-7638</span>
+      </span>
     </a>
 
-    <!-- ============ QUIZ ============ -->
-    <section class="sobe mb-8 w-full" style="--d: 160ms">
-      <button type="button" id="quiz-abrir" class="quiz-abre group flex w-full items-center justify-between rounded-[1.15rem] p-4 text-left text-white transition">
-        <span class="flex items-center gap-4">
-          <span class="rounded-xl bg-white/15 p-2">
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg>
-          </span>
-          <span>
-            <span class="block text-[15px] font-semibold">Não sabe se é caso para fisioterapia?</span>
-            <span class="block text-[11px] opacity-85">Responda 3 perguntas e eu te digo como posso ajudar.</span>
-          </span>
+    <a href="/" class="pilula sobe" style="--d: 250ms">
+      <span class="pilula__medalhao" aria-hidden="true">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3 7.5 7.03 7.5 12s2.015 9 4.5 9ZM3.6 9h16.8M3.6 15h16.8"/></svg>
+      </span>
+      <span class="flex-1">
+        <span class="pilula__rotulo">Site</span>
+        <span class="pilula__nota">Tratamentos e como funciona</span>
+      </span>
+    </a>
+
+    <a href="/#onde-atendo" class="pilula sobe" style="--d: 300ms">
+      <span class="pilula__medalhao" aria-hidden="true">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+      </span>
+      <span class="flex-1">
+        <span class="pilula__rotulo">Onde eu atendo</span>
+        <span class="pilula__nota">Arapiraca e região</span>
+      </span>
+    </a>
+
+    <a href="https://www.instagram.com/fisio.saramello/" target="_blank" rel="noopener noreferrer" class="pilula sobe" style="--d: 350ms">
+      <span class="pilula__medalhao" aria-hidden="true">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.8 3.8 0 0 1-1.38-.9 3.8 3.8 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.98c-3.14 0-3.51.01-4.75.07-1.15.05-1.77.24-2.18.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.35 1.03-.4 2.18-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.05 1.15.24 1.77.4 2.18.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.35 2.18.4 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c1.15-.05 1.77-.24 2.18-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.35-1.03.4-2.18.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.05-1.15-.24-1.77-.4-2.18a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.35-2.18-.4-1.24-.06-1.61-.07-4.75-.07Zm0 3.37a4.49 4.49 0 1 1 0 8.98 4.49 4.49 0 0 1 0-8.98Zm0 7.4a2.91 2.91 0 1 0 0-5.82 2.91 2.91 0 0 0 0 5.82Zm5.72-7.6a1.05 1.05 0 1 1-2.1 0 1.05 1.05 0 0 1 2.1 0Z"/></svg>
+      </span>
+      <span class="flex-1">
+        <span class="pilula__rotulo">Instagram</span>
+        <span class="pilula__nota">@fisio.saramello</span>
+      </span>
+    </a>
+
+    <!-- INSERIR O LINK DE AVALIAÇÃO DO GOOGLE (g.page/r/.../review) quando o perfil estiver no ar -->
+    <a href="#" data-whatsapp data-message="Olá, Sara! Fui atendido(a) por você e gostaria de deixar uma avaliação."
+       class="pilula sobe" style="--d: 400ms">
+      <span class="pilula__medalhao" aria-hidden="true">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.6Z"/></svg>
+      </span>
+      <span class="flex-1">
+        <span class="pilula__rotulo">Avaliar atendimento</span>
+        <span class="pilula__nota">Conte como foi o seu tratamento</span>
+      </span>
+    </a>
+
+    <a href="mailto:Dr.saramello@gmail.com" class="pilula sobe" style="--d: 450ms">
+      <span class="pilula__medalhao" aria-hidden="true">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+      </span>
+      <span class="flex-1">
+        <span class="pilula__rotulo">E-mail</span>
+        <span class="pilula__nota">Dr.saramello@gmail.com</span>
+      </span>
+    </a>
+  </nav>
+
+  <!-- ============ O QUE EU TRATO ============ -->
+  <section class="mt-10 px-7">
+    <p class="sobe mb-4 text-center text-[10px] font-medium uppercase tracking-[0.3em] text-sage-600" style="--d: 500ms">
+      O que eu trato
+    </p>
+    <div class="flex flex-col gap-3.5">
+      <a href="#" data-whatsapp data-area="Neurologia (pós-AVC ou Parkinson)" class="pilula sobe" style="--d: 540ms">
+        <span class="pilula__medalhao" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.5 4.5a3 3 0 0 0-5.7-1.3A2.8 2.8 0 0 0 6 5.6a2.9 2.9 0 0 0-1.3 5A3 3 0 0 0 6 16.2a2.8 2.8 0 0 0 3.9 2.5A3 3 0 0 0 15.5 18"/><path stroke-linecap="round" stroke-linejoin="round" d="M15.5 4.5v14M15.5 8h2.2M15.5 13h3M19 10.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg>
         </span>
-        <svg id="quiz-chevron" class="h-5 w-5 opacity-70 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-      </button>
+        <span class="flex-1">
+          <span class="pilula__rotulo">Neurologia</span>
+          <span class="pilula__nota">Pós-AVC e doença de Parkinson</span>
+        </span>
+      </a>
 
-      <div id="quiz-painel" class="cartao mt-3 p-5" hidden>
-        <div class="quiz-passo" id="quiz-progresso" aria-hidden="true"><span></span><span></span><span></span></div>
-        <p id="quiz-pergunta" class="mb-4 text-[15px] font-semibold text-bark-800">&nbsp;</p>
-        <div id="quiz-opcoes" class="flex flex-col gap-2.5"></div>
+      <a href="#" data-whatsapp data-area="Fisioterapia geriátrica" class="pilula sobe" style="--d: 580ms">
+        <span class="pilula__medalhao" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.4a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M10.2 8.4h3.1l1.7 5-2 .7-.4 3.4-1 4.1M11.6 17.5l-2.3 4.1M17.8 11.5V21"/></svg>
+        </span>
+        <span class="flex-1">
+          <span class="pilula__rotulo">Geriatria</span>
+          <span class="pilula__nota">Força, equilíbrio e prevenção de quedas</span>
+        </span>
+      </a>
 
-        <div id="quiz-resultado" hidden>
-          <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-sage-700">O que eu recomendo</p>
-          <p id="quiz-texto" class="mt-3 text-sm leading-relaxed text-bark-600"></p>
-          <a href="#" id="quiz-cta" class="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-sage-700 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-sage-800">
-            Falar com a Sara sobre isso
-          </a>
-          <button type="button" id="quiz-refazer" class="mt-3 w-full text-center text-[12px] font-medium text-bark-500 underline-offset-4 hover:underline">
-            Refazer
-          </button>
+      <a href="#" data-whatsapp data-area="Treino funcional" class="pilula sobe" style="--d: 620ms">
+        <span class="pilula__medalhao" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 9v6M7 7.5v9M17 7.5v9M20 9v6M7 12h10"/></svg>
+        </span>
+        <span class="flex-1">
+          <span class="pilula__rotulo">Funcional</span>
+          <span class="pilula__nota">Voltar a fazer o que a rotina exige</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ INSTAGRAM ============ -->
+  <section class="mt-11 px-7">
+    <p class="sobe mb-4 text-center text-[10px] font-medium uppercase tracking-[0.3em] text-sage-600" style="--d: 660ms">
+      @fisio.saramello
+    </p>
+    <div class="trilho" id="ig-trilho"></div>
+    <a href="https://www.instagram.com/fisio.saramello/" target="_blank" rel="noopener noreferrer"
+       class="cartao mt-1 flex items-center justify-center rounded-full py-3.5 text-[11px] font-medium uppercase tracking-[0.18em] text-bark-700 transition hover:bg-white">
+      Ver perfil
+    </a>
+  </section>
+
+  <!-- ============ DÚVIDAS FREQUENTES ============ -->
+  <section class="mt-11 px-7">
+    <p class="sobe mb-4 text-center text-[10px] font-medium uppercase tracking-[0.3em] text-sage-600" style="--d: 700ms">
+      Dúvidas frequentes
+    </p>
+
+    <div class="flex flex-col gap-3">
+      <details class="cartao sobe" style="--d: 730ms">
+        <summary class="flex items-center justify-between gap-4 p-4 text-sm font-medium text-bark-800">
+          Como agendo uma avaliação?
+          <svg class="seta h-4 w-4 shrink-0 text-gold-500 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="px-4 pb-4 text-sm font-light leading-relaxed text-bark-600">
+          Me chame no WhatsApp pelo botão no topo. Me conte quem é o paciente, o que aconteceu e onde vocês moram — eu respondo se o caso é comigo e já combinamos a visita.
         </div>
-      </div>
-    </section>
+      </details>
 
-    <!-- ============ ÁREAS ============ -->
-    <section class="mb-8 w-full">
-      <h2 class="sobe mb-5 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-sage-700" style="--d: 180ms">
-        O que eu trato
-      </h2>
+      <details class="cartao sobe" style="--d: 760ms">
+        <summary class="flex items-center justify-between gap-4 p-4 text-sm font-medium text-bark-800">
+          O atendimento é mesmo em casa?
+          <svg class="seta h-4 w-4 shrink-0 text-gold-500 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="px-4 pb-4 text-sm font-light leading-relaxed text-bark-600">
+          Sim — sempre. Eu vou até o paciente, levo o material da sessão e uso o próprio ambiente da casa no treino. Não existe consultório para vocês se deslocarem.
+        </div>
+      </details>
 
-      <div class="flex flex-col gap-3.5">
-        <a href="#" data-whatsapp data-area="Neurologia (pós-AVC ou Parkinson)" class="cartao sobe group flex w-full items-center justify-between p-4" style="--d: 220ms">
-          <span class="flex items-center gap-4">
-            <span class="rounded-xl bg-sage-100 p-2 text-sage-700 transition group-hover:bg-sage-200">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.5 4.5a3 3 0 0 0-5.7-1.3A2.8 2.8 0 0 0 6 5.6a2.9 2.9 0 0 0-1.3 5A3 3 0 0 0 6 16.2a2.8 2.8 0 0 0 3.9 2.5A3 3 0 0 0 15.5 18"/><path stroke-linecap="round" stroke-linejoin="round" d="M15.5 4.5v14M15.5 8h2.2M15.5 13h3M19 10.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg>
-            </span>
-            <span class="text-left">
-              <span class="block text-base font-semibold text-bark-800">Neurologia</span>
-              <span class="block text-[11px] text-bark-600">Reabilitação pós-AVC e doença de Parkinson</span>
-            </span>
-          </span>
-          <svg class="h-5 w-5 text-sage-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-sage-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        </a>
+      <details class="cartao sobe" style="--d: 790ms">
+        <summary class="flex items-center justify-between gap-4 p-4 text-sm font-medium text-bark-800">
+          Preciso de pedido médico?
+          <svg class="seta h-4 w-4 shrink-0 text-gold-500 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="px-4 pb-4 text-sm font-light leading-relaxed text-bark-600">
+          Não é obrigatório para a avaliação. Mas se tiver laudos, exames ou o relatório de alta, separe para o dia da visita — ajuda muito a montar o plano.
+        </div>
+      </details>
 
-        <a href="#" data-whatsapp data-area="Fisioterapia geriátrica" class="cartao sobe group flex w-full items-center justify-between p-4" style="--d: 270ms">
-          <span class="flex items-center gap-4">
-            <span class="rounded-xl bg-sage-100 p-2 text-sage-700 transition group-hover:bg-sage-200">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.4a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M10.2 8.4h3.1l1.7 5-2 .7-.4 3.4-1 4.1M11.6 17.5l-2.3 4.1M17.8 11.5V21"/></svg>
-            </span>
-            <span class="text-left">
-              <span class="block text-base font-semibold text-bark-800">Geriatria</span>
-              <span class="block text-[11px] text-bark-600">Força, equilíbrio e prevenção de quedas</span>
-            </span>
-          </span>
-          <svg class="h-5 w-5 text-sage-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-sage-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        </a>
+      <details class="cartao sobe" style="--d: 820ms">
+        <summary class="flex items-center justify-between gap-4 p-4 text-sm font-medium text-bark-800">
+          Você atende no meu bairro?
+          <svg class="seta h-4 w-4 shrink-0 text-gold-500 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="px-4 pb-4 text-sm font-light leading-relaxed text-bark-600">
+          Atendo em Arapiraca e em cidades da região. <a href="#" data-whatsapp data-message="Olá, Sara! Moro em ... e gostaria de saber se você atende no meu bairro." class="font-medium text-gold-700 underline-offset-4 hover:underline">Me diga onde você mora</a> que eu confirmo na hora.
+        </div>
+      </details>
+    </div>
+  </section>
 
-        <a href="#" data-whatsapp data-area="Treino funcional" class="cartao sobe group flex w-full items-center justify-between p-4" style="--d: 320ms">
-          <span class="flex items-center gap-4">
-            <span class="rounded-xl bg-sage-100 p-2 text-sage-700 transition group-hover:bg-sage-200">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 9v6M7 7.5v9M17 7.5v9M20 9v6M7 12h10"/></svg>
-            </span>
-            <span class="text-left">
-              <span class="block text-base font-semibold text-bark-800">Funcional</span>
-              <span class="block text-[11px] text-bark-600">Voltar a fazer o que a rotina exige</span>
-            </span>
-          </span>
-          <svg class="h-5 w-5 text-sage-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-sage-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </section>
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="sobe mt-12 px-7 text-center" style="--d: 860ms">
+    <div class="filete mx-auto w-28"></div>
+    <p class="mt-6 font-serif text-xl font-light tracking-[0.08em] text-bark-700">Dra. Sara Melo</p>
+    <p class="mt-2 text-[9px] font-medium uppercase tracking-[0.26em] text-sage-600">
+      Arapiraca – AL · Atendimento em domicílio
+    </p>
+    <p class="mt-4 text-[10px] uppercase tracking-[0.18em] text-bark-400">
+      &copy; <span id="ano">2026</span>
+    </p>
+  </footer>
+</main>
 
-    <!-- ============ LINKS ============ -->
-    <nav class="mb-8 flex w-full flex-col gap-3.5" aria-label="Links">
+<script>
+(function () {
+  'use strict';
 
-      <a href="/" class="cartao sobe group flex w-full items-center justify-between p-4" style="--d: 370ms">
-        <span class="flex items-center gap-4">
-          <span class="rounded-xl bg-sage-100 p-2 text-sage-700 transition group-hover:bg-sage-200">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3 7.5 7.03 7.5 12s2.015 9 4.5 9ZM3.6 9h16.8M3.6 15h16.8"/></svg>
-          </span>
-          <span class="text-left">
-            <span class="block text-base font-semibold text-bark-800">Site oficial</span>
-            <span class="block text-[11px] text-bark-600">Como funciona, o que eu trato e onde atendo</span>
-          </span>
-        </span>
-        <svg class="h-5 w-5 text-sage-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-sage-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-      </a>
+  var WHATSAPP_NUMBER = '5582998427638';
+  var WHATSAPP_MESSAGE = 'Olá, Sara! Vim pelo Instagram e gostaria de agendar uma avaliação.';
 
-      <a href="/#onde-atendo" class="cartao sobe group flex w-full items-center justify-between p-4" style="--d: 420ms">
-        <span class="flex items-center gap-4">
-          <span class="rounded-xl bg-sage-100 p-2 text-sage-700 transition group-hover:bg-sage-200">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-          </span>
-          <span class="text-left">
-            <span class="block text-base font-semibold text-bark-800">Onde eu atendo</span>
-            <span class="block text-[11px] text-bark-600">Arapiraca e cidades da região</span>
-          </span>
-        </span>
-        <svg class="h-5 w-5 text-sage-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-sage-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-      </a>
+  function url(msg) {
+    return 'https://api.whatsapp.com/send?phone=' + WHATSAPP_NUMBER + '&text=' + encodeURIComponent(msg || WHATSAPP_MESSAGE);
+  }
 
-      <a href="/#como-funciona" class="cartao sobe group flex w-full items-center justify-between p-4" style="--d: 470ms">
-        <span class="flex items-center gap-4">
-          <span class="rounded-xl bg-sage-100 p-2 text-sage-700 transition group-hover:bg-sage-200">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12M8.25 17.25h12M3.75 6.75h.008v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.008v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.008v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/></svg>
-          </span>
-          <span class="text-left">
-            <span class="block text-base font-semibold text-bark-800">Como funciona o atendimento</span>
-            <span class="block text-[11px] text-bark-600">Da primeira mensagem até as sessões</span>
-          </span>
-        </span>
-        <svg class="h-5 w-5 text-sage-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-sage-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-      </a>
-    </nav>
+  document.querySelectorAll('a[data-whatsapp]').forEach(function (el) {
+    var msg = el.getAttribute('data-message');
+    if (!msg) {
+      var area = el.getAttribute('data-area');
+      msg = area ? WHATSAPP_MESSAGE + ' Meu interesse é: ' + area + '.' : WHATSAPP_MESSAGE;
+    }
+    el.setAttribute('href', url(msg));
+    el.setAttribute('target', '_blank');
+    el.setAttribute('rel', 'noopener noreferrer');
+  });
 
-    <!-- ============ DÚVIDAS ============ -->
-    <section class="mb-10 w-full">
-      <h2 class="sobe mb-5 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-sage-700" style="--d: 520ms">
-        Dúvidas frequentes
-      </h2>
+  /* ---------------- PERGUNTA QUALIFICADORA ---------------- */
+  var btnQuiz = document.getElementById('quiz-abrir');
+  if (btnQuiz) {
+    var painel = document.getElementById('quiz-painel');
+    var chevron = document.getElementById('quiz-chevron');
+    var elPergunta = document.getElementById('quiz-pergunta');
+    var elOpcoes = document.getElementById('quiz-opcoes');
+    var elResultado = document.getElementById('quiz-resultado');
+    var elTexto = document.getElementById('quiz-texto');
+    var elCta = document.getElementById('quiz-cta');
+    var elProgresso = document.getElementById('quiz-progresso');
 
-      <div class="flex flex-col gap-3">
-        <details class="cartao sobe group" style="--d: 550ms">
-          <summary class="flex items-center justify-between gap-4 p-4 text-sm font-medium text-bark-800">
-            Como agendo uma avaliação?
-            <svg class="seta h-4 w-4 shrink-0 text-sage-600 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-          </summary>
-          <div class="px-4 pb-4 text-sm font-light leading-relaxed text-bark-600">
-            Me chame no WhatsApp pelo botão no topo. Me conte quem é o paciente, o que aconteceu e onde vocês moram — eu respondo se o caso é comigo e já combinamos a visita.
-          </div>
-        </details>
+    var PERGUNTAS = [
+      { p: 'Para quem é o atendimento?', ops: [
+          { t: 'Para meu pai ou minha mãe', v: 'pai_mae', f: 'meu pai ou minha mãe' },
+          { t: 'Para meu avô ou minha avó', v: 'avos',    f: 'meu avô ou minha avó' },
+          { t: 'Para o meu cônjuge',        v: 'conjuge', f: 'meu cônjuge' },
+          { t: 'Para mim mesmo(a)',         v: 'proprio', f: 'mim mesmo(a)' } ] },
+      { p: 'O que está acontecendo?', ops: [
+          { t: 'Teve um AVC e ficou com sequelas', v: 'avc',       f: 'sequela de AVC' },
+          { t: 'Tem doença de Parkinson',          v: 'parkinson', f: 'doença de Parkinson' },
+          { t: 'Perdeu força e equilíbrio',        v: 'fraqueza',  f: 'perda de força e equilíbrio' },
+          { t: 'Já caiu em casa',                  v: 'queda',     f: 'queda em casa' },
+          { t: 'Está acamado',                     v: 'acamado',   f: 'paciente acamado' } ] },
+      { p: 'Faz fisioterapia hoje?', ops: [
+          { t: 'Nunca fez',                                   v: 'nunca',   f: 'nunca fez fisioterapia' },
+          { t: 'Fazia e parou',                               v: 'parou',   f: 'fazia fisioterapia e parou' },
+          { t: 'Faz na clínica, mas o deslocamento é difícil', v: 'clinica', f: 'hoje faz na clínica, mas o deslocamento é difícil' } ] }
+    ];
 
-        <details class="cartao sobe group" style="--d: 580ms">
-          <summary class="flex items-center justify-between gap-4 p-4 text-sm font-medium text-bark-800">
-            O atendimento é mesmo em casa?
-            <svg class="seta h-4 w-4 shrink-0 text-sage-600 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-          </summary>
-          <div class="px-4 pb-4 text-sm font-light leading-relaxed text-bark-600">
-            Sim — sempre. Eu vou até o paciente, levo o material da sessão e uso o próprio ambiente da casa no treino. Não existe consultório para vocês se deslocarem.
-          </div>
-        </details>
+    var RESULTADOS = {
+      avc:       'Reabilitação neurológica pós-AVC. O trabalho é recuperar movimento, equilíbrio e as tarefas do dia a dia — e quanto mais cedo começa, melhor costuma ser o resultado.',
+      parkinson: 'Fisioterapia para doença de Parkinson: marcha, postura e rigidez. O objetivo é manter a pessoa ativa e independente pelo maior tempo possível.',
+      fraqueza:  'Fisioterapia geriátrica com foco em fortalecimento. Perder força não é "coisa da idade" — é sinal de que precisa de trabalho direcionado.',
+      queda:     'Prevenção de quedas com treino de equilíbrio, mais a adaptação do ambiente da casa. Uma queda em idoso raramente é só um susto.',
+      acamado:   'Cuidados para o paciente acamado: preservar amplitude, circulação e conforto, e prevenir as complicações da imobilidade.'
+    };
 
-        <details class="cartao sobe group" style="--d: 610ms">
-          <summary class="flex items-center justify-between gap-4 p-4 text-sm font-medium text-bark-800">
-            Preciso de pedido médico?
-            <svg class="seta h-4 w-4 shrink-0 text-sage-600 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-          </summary>
-          <div class="px-4 pb-4 text-sm font-light leading-relaxed text-bark-600">
-            Não é obrigatório para a avaliação. Mas se tiver laudos, exames ou o relatório de alta, separe para o dia da visita — ajuda muito a montar o plano.
-          </div>
-        </details>
+    var passo = 0, respostas = [], frases = [];
 
-        <details class="cartao sobe group" style="--d: 640ms">
-          <summary class="flex items-center justify-between gap-4 p-4 text-sm font-medium text-bark-800">
-            Você atende no meu bairro?
-            <svg class="seta h-4 w-4 shrink-0 text-sage-600 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-          </summary>
-          <div class="px-4 pb-4 text-sm font-light leading-relaxed text-bark-600">
-            Atendo em Arapiraca e em cidades da região. <a href="#" data-whatsapp data-message="Olá, Sara! Moro em ... e gostaria de saber se você atende no meu bairro." class="font-medium text-gold-700 underline-offset-4 hover:underline">Me diga onde você mora</a> que eu confirmo na hora.
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <!-- ============ INSTAGRAM ============ -->
-    <section class="sobe mb-8 w-full" style="--d: 660ms">
-      <h2 class="mb-4 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-sage-700">
-        <span class="text-gold-500">&#9656;</span> @fisio.saramello
-      </h2>
-
-      <div class="trilho" id="ig-trilho"></div>
-
-      <a href="https://www.instagram.com/fisio.saramello/" target="_blank" rel="noopener noreferrer"
-         class="cartao mt-1 flex items-center justify-center gap-2 rounded-full py-3 text-[13px] font-semibold text-bark-800">
-        Ver perfil no Instagram
-      </a>
-    </section>
-
-    <!-- ============ RODAPÉ ============ -->
-    <footer class="sobe flex flex-col items-center text-center" style="--d: 680ms">
-      <span class="titulo text-lg text-bark-800">Dra. Sara Melo</span>
-      <a href="mailto:Dr.saramello@gmail.com" class="mt-2 text-[11px] text-bark-600 underline-offset-4 hover:text-gold-700 hover:underline">Dr.saramello@gmail.com</a>
-      <p class="mt-3 text-[10px] uppercase tracking-[0.18em] text-bark-400">&copy; <span id="ano">2026</span> &middot; Arapiraca – AL</p>
-      <p class="mt-1 text-[9px] uppercase tracking-[0.18em] text-sage-600">Fisioterapia domiciliar &middot; Neurologia e geriatria</p>
-    </footer>
-  </main>
-
-  <script>
-  (function () {
-    'use strict';
-
-    var WHATSAPP_NUMBER = '5582998427638';
-    var WHATSAPP_MESSAGE = 'Olá, Sara! Vim pelo Instagram e gostaria de agendar uma avaliação.';
-
-    function url(msg) {
-      return 'https://api.whatsapp.com/send?phone=' + WHATSAPP_NUMBER + '&text=' + encodeURIComponent(msg || WHATSAPP_MESSAGE);
+    function marcarProgresso() {
+      [].forEach.call(elProgresso.children, function (b, i) { b.classList.toggle('feito', i < passo); });
     }
 
-    document.querySelectorAll('[data-whatsapp]').forEach(function (el) {
-      var msg = el.getAttribute('data-message');
-      if (!msg) {
-        var area = el.getAttribute('data-area');
-        msg = area ? WHATSAPP_MESSAGE + ' Meu interesse é: ' + area + '.' : WHATSAPP_MESSAGE;
+    function render() {
+      marcarProgresso();
+      if (passo < PERGUNTAS.length) {
+        elResultado.hidden = true;
+        elPergunta.hidden = false;
+        elOpcoes.hidden = false;
+        elPergunta.textContent = PERGUNTAS[passo].p;
+        elOpcoes.innerHTML = PERGUNTAS[passo].ops.map(function (o) {
+          return '<button type="button" class="quiz-op" data-v="' + o.v + '" data-f="' + o.f + '"><span>' + o.t + '</span>' +
+                 '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>';
+        }).join('');
+        return;
       }
-      el.setAttribute('href', url(msg));
-      el.setAttribute('target', '_blank');
-      el.setAttribute('rel', 'noopener noreferrer');
+      elPergunta.hidden = true;
+      elOpcoes.hidden = true;
+      elResultado.hidden = false;
+      [].forEach.call(elProgresso.children, function (b) { b.classList.add('feito'); });
+
+      elTexto.textContent = RESULTADOS[respostas[1]] ||
+        'Me conte um pouco mais sobre o caso que eu te oriento sobre o melhor caminho.';
+      elCta.setAttribute('href', url(
+        WHATSAPP_MESSAGE + ' Respondi o quiz do seu link: o atendimento é para ' + frases[0] +
+        ', a situação é ' + frases[1] + ' e ' + frases[2] + '.'));
+      elCta.setAttribute('target', '_blank');
+      elCta.setAttribute('rel', 'noopener noreferrer');
+    }
+
+    btnQuiz.addEventListener('click', function () {
+      var abrindo = painel.hidden;
+      painel.hidden = !abrindo;
+      chevron.style.transform = abrindo ? 'rotate(180deg)' : '';
+      if (abrindo && passo === 0 && !respostas.length) render();
     });
 
-    // Só uma dúvida aberta por vez
-    var duvidas = document.querySelectorAll('details');
-    duvidas.forEach(function (d) {
-      d.addEventListener('toggle', function () {
-        if (!d.open) return;
-        duvidas.forEach(function (outra) { if (outra !== d) outra.open = false; });
-      });
+    elOpcoes.addEventListener('click', function (e) {
+      var op = e.target.closest('.quiz-op');
+      if (!op) return;
+      respostas[passo] = op.getAttribute('data-v');
+      frases[passo] = op.getAttribute('data-f');
+      passo++;
+      render();
     });
 
+    document.getElementById('quiz-refazer').addEventListener('click', function () {
+      passo = 0; respostas = []; frases = []; render();
+    });
+  }
 
-    /* ---------------- QUIZ DE TRIAGEM ---------------- */
-    var btnQuiz = document.getElementById('quiz-abrir');
-    if (btnQuiz) {
-      var painel = document.getElementById('quiz-painel');
-      var chevron = document.getElementById('quiz-chevron');
-      var elPergunta = document.getElementById('quiz-pergunta');
-      var elOpcoes = document.getElementById('quiz-opcoes');
-      var elResultado = document.getElementById('quiz-resultado');
-      var elTexto = document.getElementById('quiz-texto');
-      var elCta = document.getElementById('quiz-cta');
-      var elProgresso = document.getElementById('quiz-progresso');
+  /* ---------------- CARROSSEL DO INSTAGRAM ---------------- */
+  var POSTS = ['DRADWLKgHfV', 'DbgEdx-xIKD', 'DTKx8_EkeD0', 'DTQQBdQEaX6', 'DMAPNqbgtCC', 'DRmbAqnEbrI'];
+  var trilho = document.getElementById('ig-trilho');
 
-      var PERGUNTAS = [
-        { p: 'Para quem é o atendimento?', ops: [
-            { t: 'Para meu pai ou minha mãe', v: 'pai_mae', f: 'meu pai ou minha mãe' },
-            { t: 'Para meu avô ou minha avó', v: 'avos',    f: 'meu avô ou minha avó' },
-            { t: 'Para o meu cônjuge',        v: 'conjuge', f: 'meu cônjuge' },
-            { t: 'Para mim mesmo(a)',         v: 'proprio', f: 'mim mesmo(a)' } ] },
-        { p: 'O que está acontecendo?', ops: [
-            { t: 'Teve um AVC e ficou com sequelas', v: 'avc',       f: 'sequela de AVC' },
-            { t: 'Tem doença de Parkinson',          v: 'parkinson', f: 'doença de Parkinson' },
-            { t: 'Perdeu força e equilíbrio',        v: 'fraqueza',  f: 'perda de força e equilíbrio' },
-            { t: 'Já caiu em casa',                  v: 'queda',     f: 'queda em casa' },
-            { t: 'Está acamado',                     v: 'acamado',   f: 'paciente acamado' } ] },
-        { p: 'Faz fisioterapia hoje?', ops: [
-            { t: 'Nunca fez',                                 v: 'nunca',   f: 'nunca fez fisioterapia' },
-            { t: 'Fazia e parou',                             v: 'parou',   f: 'fazia fisioterapia e parou' },
-            { t: 'Faz na clínica, mas o deslocamento é difícil', v: 'clinica', f: 'hoje faz na clínica, mas o deslocamento é difícil' } ] }
-      ];
+  function montarIG() {
+    trilho.innerHTML = POSTS.map(function (c) {
+      return '<div class="overflow-hidden rounded-2xl border border-sand-300 bg-white shadow-[0_10px_30px_-18px_rgba(99,85,72,.45)]">' +
+               '<iframe src="https://www.instagram.com/p/' + c + '/embed/" title="Publicação de @fisio.saramello no Instagram" ' +
+               'class="block h-[300px] w-full border-0" loading="lazy" scrolling="no"></iframe>' +
+             '</div>';
+    }).join('');
+  }
 
-      var RESULTADOS = {
-        avc:       'Reabilitação neurológica pós-AVC. O trabalho é recuperar movimento, equilíbrio e as tarefas do dia a dia — e quanto mais cedo começa, melhor costuma ser o resultado.',
-        parkinson: 'Fisioterapia para doença de Parkinson: marcha, postura e rigidez. O objetivo é manter a pessoa ativa e independente pelo maior tempo possível.',
-        fraqueza:  'Fisioterapia geriátrica com foco em fortalecimento. Perder força não é "coisa da idade" — é sinal de que precisa de trabalho direcionado.',
-        queda:     'Prevenção de quedas com treino de equilíbrio, mais a adaptação do ambiente da casa. Uma queda em idoso raramente é só um susto.',
-        acamado:   'Cuidados para o paciente acamado: preservar amplitude, circulação e conforto, e prevenir as complicações da imobilidade.'
-      };
+  if (trilho) {
+    if ('IntersectionObserver' in window) {
+      var obsIG = new IntersectionObserver(function (es) {
+        if (es.some(function (e) { return e.isIntersecting; })) { montarIG(); obsIG.disconnect(); }
+      }, { rootMargin: '500px 0px' });
+      obsIG.observe(trilho);
+    } else { montarIG(); }
+  }
 
-      var passo = 0, respostas = [], frases = [];
-
-      function marcarProgresso() {
-        [].forEach.call(elProgresso.children, function (b, i) {
-          b.classList.toggle('feito', i < passo);
-        });
-      }
-
-      function render() {
-        marcarProgresso();
-        if (passo < PERGUNTAS.length) {
-          elResultado.hidden = true;
-          elPergunta.hidden = false;
-          elOpcoes.hidden = false;
-          elPergunta.textContent = PERGUNTAS[passo].p;
-          elOpcoes.innerHTML = PERGUNTAS[passo].ops.map(function (o) {
-            return '<button type="button" class="quiz-op" data-v="' + o.v + '" data-f="' + o.f + '"><span>' + o.t + '</span>' +
-                   '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>';
-          }).join('');
-          return;
-        }
-        // resultado
-        elPergunta.hidden = true;
-        elOpcoes.hidden = true;
-        elResultado.hidden = false;
-        [].forEach.call(elProgresso.children, function (b) { b.classList.add('feito'); });
-
-        var condicao = respostas[1];
-        elTexto.textContent = RESULTADOS[condicao] || 'Me conte um pouco mais sobre o caso que eu te oriento sobre o melhor caminho.';
-        elCta.setAttribute('href', url(
-          WHATSAPP_MESSAGE + ' Respondi o quiz do seu link: o atendimento é para ' + frases[0] +
-          ', a situação é ' + frases[1] + ' e ' + frases[2] + '.'));
-        elCta.setAttribute('target', '_blank');
-        elCta.setAttribute('rel', 'noopener noreferrer');
-      }
-
-      btnQuiz.addEventListener('click', function () {
-        var abrindo = painel.hidden;
-        painel.hidden = !abrindo;
-        chevron.style.transform = abrindo ? 'rotate(180deg)' : '';
-        if (abrindo && passo === 0 && !respostas.length) render();
-      });
-
-      elOpcoes.addEventListener('click', function (e) {
-        var op = e.target.closest('.quiz-op');
-        if (!op) return;
-        respostas[passo] = op.getAttribute('data-v');
-        frases[passo] = op.getAttribute('data-f');
-        passo++;
-        render();
-      });
-
-      document.getElementById('quiz-refazer').addEventListener('click', function () {
-        passo = 0; respostas = []; frases = []; render();
-      });
-    }
-
-    /* ---------------- CARROSSEL DO INSTAGRAM ---------------- */
-    var POSTS = ['DRADWLKgHfV', 'DbgEdx-xIKD', 'DTKx8_EkeD0', 'DTQQBdQEaX6', 'DMAPNqbgtCC', 'DRmbAqnEbrI'];
-    var trilho = document.getElementById('ig-trilho');
-
-    function montarIG() {
-      trilho.innerHTML = POSTS.map(function (c) {
-        return '<div class="overflow-hidden rounded-2xl border border-sand-300 bg-white shadow-[0_10px_30px_-18px_rgba(99,85,72,.45)]">' +
-                 '<iframe src="https://www.instagram.com/p/' + c + '/embed/" title="Publicação de @fisio.saramello no Instagram" ' +
-                 'class="block h-[300px] w-full border-0" loading="lazy" scrolling="no"></iframe>' +
-               '</div>';
-      }).join('');
-    }
-
-    if (trilho) {
-      if ('IntersectionObserver' in window) {
-        var obsIG = new IntersectionObserver(function (es) {
-          if (es.some(function (e) { return e.isIntersecting; })) { montarIG(); obsIG.disconnect(); }
-        }, { rootMargin: '500px 0px' });
-        obsIG.observe(trilho);
-      } else { montarIG(); }
-    }
-
-    document.getElementById('ano').textContent = new Date().getFullYear();
-  })();
-  </script>
+  document.getElementById('ano').textContent = new Date().getFullYear();
+})();
+</script>
 </body>
 </html>
