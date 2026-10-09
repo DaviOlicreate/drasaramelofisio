@@ -7,6 +7,7 @@
 | `cartao-linktree.png` | Cartão pronto para imprimir — leva ao linktree |
 | `cartao-site.png` | Cartão pronto para imprimir — leva ao site |
 | `cartao-whatsapp.png` | Cartão pronto para imprimir — abre a conversa no WhatsApp |
+| `cartao-avaliacao.png` | Cartão pronto para imprimir — abre a avaliação no Google |
 | `qr-*.png` | Só o código, fundo transparente, para usar em outras artes |
 | `qr-*.svg` | Só o código, vetorial — escala para qualquer tamanho sem perder nitidez |
 
@@ -23,13 +24,15 @@ confiável a um palmo de distância.
 - **Linktree** → https://drasaramelofisio.vercel.app/linktree
 - **Site** → https://drasaramelofisio.vercel.app
 - **WhatsApp** → abre a conversa com a mensagem "Olá, Sara! Gostaria de agendar uma avaliação."
+- **Avaliação** → https://drasaramelofisio.vercel.app/avaliacao, que redireciona para
+  o Google
 
-## Ainda falta
+## Por que o QR de avaliação não aponta direto para o Google
 
-O **QR de avaliação do Google** só pode ser gerado depois que o perfil no
-Google Meu Negócio existir — é ele que fornece o link `g.page/r/.../review`.
-Enquanto isso, o cartão do linktree cumpre esse papel: lá dentro tem o botão
-"Avaliar".
+Ele passa por `drasaramelofisio.vercel.app/avaliacao`, que redireciona. Assim o
+cartão impresso continua valendo se o link do Google mudar — é só alterar o
+redirecionamento. Apontando direto para o `g.page`, qualquer mudança obrigaria a
+reimprimir tudo.
 
 ## Se algum link mudar
 
