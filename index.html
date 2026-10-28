@@ -51,7 +51,7 @@
       { "@type": "MedicalTherapy", "name": "Fisioterapia para doença de Parkinson" },
       { "@type": "MedicalTherapy", "name": "Fisioterapia geriátrica domiciliar" },
       { "@type": "MedicalTherapy", "name": "Prevenção de quedas e treino de equilíbrio" },
-      { "@type": "MedicalTherapy", "name": "Fortalecimento e treino funcional para idosos" }
+      { "@type": "MedicalTherapy", "name": "Manutenção da capacidade funcional em idosos" }
     ],
     "openingHoursSpecification": [{
       "@type": "OpeningHoursSpecification",
@@ -76,7 +76,7 @@
   <!-- Tipografia da marca: Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -151,6 +151,16 @@
       line-height: 1.14;
     }
     .titulo strong { font-weight: 600; }
+
+    /* frases que a Sara pediu em destaque, na serifada do linktree */
+    .frase-destaque {
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.32em;
+      line-height: 1.3;
+      color: #566047;
+    }
 
     .olho {
       font-size: .7rem; font-weight: 600; letter-spacing: .24em;
@@ -335,14 +345,24 @@
     @media (min-width: 1024px) and (max-height: 900px) {
       #inicio .hero-pad { padding-top: 6.5rem; padding-bottom: 1.5rem; }
       #inicio h1 { font-size: 2.85rem; }
-      #inicio .hero-sub { font-size: 1rem; line-height: 1.6; }
+      #inicio .hero-sub { margin-top: .85rem; font-size: 1rem; line-height: 1.6; }
+      #inicio .hero-apoio { margin-top: .5rem; font-size: .86rem; line-height: 1.55; }
+      #inicio .hero-acoes { margin-top: 1.35rem; }
+      #inicio .hero-faixa__cartao { padding-top: 1.1rem; padding-bottom: 1.1rem; }
     }
     @media (min-width: 1024px) and (max-height: 800px) {
-      #inicio .hero-pad { padding-top: 6rem; padding-bottom: 1rem; }
-      #inicio h1 { font-size: 2.45rem; }
-      #inicio .hero-faixa__titulo { font-size: 1.15rem; }
-      #inicio .hero-faixa__lista { margin-top: 1rem; padding-top: 1rem; }
-      #inicio .hero-faixa dd { font-size: .82rem; }
+      #inicio .hero-pad { padding-top: 5.5rem; padding-bottom: .75rem; }
+      #inicio h1 { font-size: 2.35rem; }
+      #inicio .hero-sub { margin-top: .7rem; font-size: .95rem; }
+      #inicio .hero-apoio { margin-top: .4rem; font-size: .79rem; line-height: 1.45; }
+      #inicio .hero-acoes { margin-top: 1rem; }
+      #inicio .hero-acoes a { padding-top: .7rem; padding-bottom: .7rem; font-size: .85rem; }
+      #inicio .hero-faixa { padding-bottom: 1rem; }
+      #inicio .hero-faixa__cartao { padding-top: .9rem; padding-bottom: .9rem; }
+      #inicio .hero-faixa__titulo { font-size: 1.05rem; }
+      #inicio .hero-faixa__lista { margin-top: .75rem; padding-top: .75rem; gap: 1rem; }
+      #inicio .hero-faixa dt { font-size: 1rem; }
+      #inicio .hero-faixa dd { font-size: .76rem; line-height: 1.5; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -381,7 +401,7 @@
       <nav class="hidden items-center gap-7 lg:flex" aria-label="Navegação principal">
         <a href="#para-voce" class="text-sm font-medium text-bark-600 transition hover:text-gold-500">Isso é para você</a>
         <a href="#sobre" class="text-sm font-medium text-bark-600 transition hover:text-gold-500">Sobre</a>
-        <a href="#tratamentos" class="text-sm font-medium text-bark-600 transition hover:text-gold-500">O que eu trato</a>
+        <a href="#tratamentos" class="text-sm font-medium text-bark-600 transition hover:text-gold-500">Serviços</a>
         <a href="#como-funciona" class="text-sm font-medium text-bark-600 transition hover:text-gold-500">Como funciona</a>
         <a href="#onde-atendo" class="text-sm font-medium text-bark-600 transition hover:text-gold-500">Onde atendo</a>
         <a href="#duvidas" class="text-sm font-medium text-bark-600 transition hover:text-gold-500">Dúvidas</a>
@@ -406,7 +426,7 @@
       <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4" aria-label="Navegação mobile">
         <a href="#para-voce"     class="rounded-xl px-4 py-3 text-sm font-medium text-bark-700 transition hover:bg-sage-100">Isso é para você se…</a>
         <a href="#sobre"         class="rounded-xl px-4 py-3 text-sm font-medium text-bark-700 transition hover:bg-sage-100">Quem é a Dra. Sara</a>
-        <a href="#tratamentos"   class="rounded-xl px-4 py-3 text-sm font-medium text-bark-700 transition hover:bg-sage-100">O que eu trato</a>
+        <a href="#tratamentos"   class="rounded-xl px-4 py-3 text-sm font-medium text-bark-700 transition hover:bg-sage-100">Serviços</a>
         <a href="#como-funciona" class="rounded-xl px-4 py-3 text-sm font-medium text-bark-700 transition hover:bg-sage-100">Como funciona o atendimento</a>
         <a href="#onde-atendo"   class="rounded-xl px-4 py-3 text-sm font-medium text-bark-700 transition hover:bg-sage-100">Onde eu atendo</a>
         <a href="#duvidas"       class="rounded-xl px-4 py-3 text-sm font-medium text-bark-700 transition hover:bg-sage-100">Dúvidas frequentes</a>
@@ -441,19 +461,23 @@
 
           <span class="inline-flex items-center gap-2 rounded-full border border-sand-400 bg-white/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-bark-600 backdrop-blur">
             <span class="h-1.5 w-1.5 rounded-full bg-gold-500"></span>
-            Atendimento em casa &middot; Arapiraca e região
+            Atendimento domiciliar &middot; Geriatria e Neurologia
           </span>
 
           <h1 class="titulo mt-6 text-[2rem] text-bark-800 sm:text-[2.75rem] lg:text-[3.35rem]">
-            Fisioterapia que vai até a sua casa para devolver
-            <strong class="text-gold-700">autonomia a quem você ama</strong>
+            Envelhecer não precisa significar
+            <strong class="text-gold-700">perder a independência</strong>
           </h1>
 
           <p class="hero-sub mt-5 max-w-xl text-base leading-relaxed text-bark-600 sm:text-lg">
-            Reabilitação pós-AVC, doença de Parkinson e fisioterapia para idosos — com avaliação feita no ambiente onde a pessoa vive, sem deslocamento e sem fila de espera.
+            Mais movimento, mais independência e mais qualidade de vida para quem você ama.
           </p>
 
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <p class="hero-apoio mt-3 max-w-xl text-sm leading-[1.7] text-bark-500">
+            Fisioterapia domiciliar especializada em idosos e pacientes neurológicos, com atendimento individualizado, humanizado e focado na recuperação e preservação da autonomia.
+          </p>
+
+          <div class="hero-acoes mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="#" data-whatsapp
                class="group inline-flex items-center justify-center gap-3 rounded-full bg-sage-700 px-8 py-4 text-sm font-semibold tracking-wide text-white shadow-card transition hover:-translate-y-0.5 hover:bg-sage-800 sm:text-base">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
@@ -464,7 +488,7 @@
 
             <a href="#tratamentos"
                class="inline-flex items-center justify-center gap-2 rounded-full border border-sand-400 bg-white/70 px-8 py-4 text-sm font-semibold text-bark-700 backdrop-blur transition hover:bg-white sm:text-base">
-              Ver o que eu trato
+              Conheça meus serviços
             </a>
           </div>
         </div>
@@ -472,7 +496,7 @@
 
       <!-- Faixa de destaques, ainda na primeira tela -->
       <div id="destaques" class="hero-faixa relative mx-auto w-full max-w-7xl px-5 pb-8 lg:px-8 lg:pb-10">
-        <div class="reveal rounded-[2rem] border border-sand-300 bg-white/85 px-6 py-6 shadow-soft backdrop-blur sm:px-8 lg:px-10 lg:py-7">
+        <div class="hero-faixa__cartao reveal rounded-[2rem] border border-sand-300 bg-white/85 px-6 py-6 shadow-soft backdrop-blur sm:px-8 lg:px-10 lg:py-7">
 
           <h2 class="hero-faixa__titulo titulo max-w-4xl text-xl text-bark-800 sm:text-2xl">
             Fisioterapia domiciliar em neurologia e geriatria
@@ -482,19 +506,19 @@
             <div>
               <dt class="titulo text-lg text-bark-800 sm:text-xl"><strong>Pós-AVC</strong></dt>
               <dd class="mt-1.5 text-sm leading-[1.65] text-bark-600">
-                Recuperação de movimento, equilíbrio e independência depois do acidente vascular cerebral.
+                Recuperação dos movimentos, fortalecimento, equilíbrio e treino da marcha para mais independência no dia a dia.
               </dd>
             </div>
             <div>
               <dt class="titulo text-lg text-bark-800 sm:text-xl"><strong>Parkinson</strong></dt>
               <dd class="mt-1.5 text-sm leading-[1.65] text-bark-600">
-                Trabalho de marcha, postura e rigidez para manter a pessoa ativa por mais tempo.
+                Exercícios específicos para mobilidade, postura e segurança ao caminhar, preservando a autonomia por mais tempo.
               </dd>
             </div>
             <div>
               <dt class="titulo text-lg text-bark-800 sm:text-xl"><strong>Geriatria</strong></dt>
               <dd class="mt-1.5 text-sm leading-[1.65] text-bark-600">
-                Fortalecimento, prevenção de quedas e manutenção da funcionalidade no dia a dia.
+                Fortalecimento, prevenção de quedas e manutenção da capacidade funcional, com mais confiança e segurança.
               </dd>
             </div>
           </dl>
@@ -503,18 +527,20 @@
     </section>
 
     <!-- ============================================================
-         SEÇÃO 2 — ISSO É PARA VOCÊ SE…
+         SEÇÃO 2 — VOCÊ PERCEBEU?
          ============================================================ -->
     <section id="para-voce" class="bg-sage-200 py-20 lg:py-28">
       <div class="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <div class="mx-auto max-w-2xl text-center reveal">
-          <span class="olho text-gold-500">Se reconheça aqui</span>
-          <h2 class="filete centro titulo mt-4 text-3xl text-bark-800 sm:text-4xl">
-            Isso é para você se…
+        <div class="mx-auto max-w-3xl text-center reveal">
+          <h2 class="filete centro titulo text-3xl text-bark-800 sm:text-4xl">
+            Você percebeu que alguém que ama está perdendo a independência?
           </h2>
-          <p class="mt-6 text-base leading-relaxed text-bark-600">
-            Na maior parte das vezes quem me procura não é o paciente — é o filho, a filha ou o neto que está tentando resolver. Se alguma dessas situações é a sua, eu posso ajudar.
+          <p class="mt-6 text-base font-semibold leading-relaxed text-bark-800">
+            Dificuldade para caminhar, medo de cair, fraqueza muscular ou perda de movimentos não devem ser ignorados.
+          </p>
+          <p class="mt-4 text-base leading-relaxed text-bark-600">
+            Muitas famílias percebem essas mudanças aos poucos, mas não sabem quando ou como procurar ajuda. Se você reconhece alguma das situações abaixo, a fisioterapia domiciliar pode ajudar.
           </p>
         </div>
 
@@ -527,9 +553,9 @@
               </svg>
             </span>
             <div>
-              <h3 class="text-base font-semibold text-bark-800">Sua mãe ou seu pai teve um AVC</h3>
+              <h3 class="text-base font-semibold text-bark-800">Seu familiar teve um AVC e ainda apresenta dificuldades?</h3>
               <p class="mt-2 text-sm leading-relaxed text-bark-600">
-                Recebeu alta do hospital e agora precisa continuar a reabilitação em casa, com acompanhamento de verdade.
+                Fraqueza muscular, dificuldade para caminhar, levantar ou movimentar um braço são alterações que podem permanecer após um AVC. A reabilitação busca recuperar habilidades e melhorar a independência nas atividades diárias.
               </p>
             </div>
           </article>
@@ -541,9 +567,9 @@
               </svg>
             </span>
             <div>
-              <h3 class="text-base font-semibold text-bark-800">Ele já caiu em casa — ou você teme que caia</h3>
+              <h3 class="text-base font-semibold text-bark-800">Seu pai ou sua mãe tem medo de cair?</h3>
               <p class="mt-2 text-sm leading-relaxed text-bark-600">
-                Insegurança para andar, medo de escada, tontura ao levantar. Queda em idoso raramente é só um susto.
+                Insegurança ao caminhar, desequilíbrio e dificuldade para levantar da cadeira são sinais que merecem atenção. A fisioterapia trabalha força, equilíbrio e segurança nos movimentos.
               </p>
             </div>
           </article>
@@ -555,9 +581,9 @@
               </svg>
             </span>
             <div>
-              <h3 class="text-base font-semibold text-bark-800">O diagnóstico de Parkinson é recente</h3>
+              <h3 class="text-base font-semibold text-bark-800">O diagnóstico de Parkinson mudou a rotina da família?</h3>
               <p class="mt-2 text-sm leading-relaxed text-bark-600">
-                Quanto antes começa o trabalho de marcha, equilíbrio e rigidez, mais tempo a pessoa mantém a própria rotina.
+                Lentidão, rigidez, dificuldade para caminhar e alterações na postura podem comprometer a autonomia. O acompanhamento fisioterapêutico ajuda a preservar a mobilidade e a funcionalidade.
               </p>
             </div>
           </article>
@@ -569,9 +595,9 @@
               </svg>
             </span>
             <div>
-              <h3 class="text-base font-semibold text-bark-800">Está acamado ou quase sem sair do quarto</h3>
+              <h3 class="text-base font-semibold text-bark-800">Seu familiar está ficando cada vez mais dependente?</h3>
               <p class="mt-2 text-sm leading-relaxed text-bark-600">
-                Mesmo sem andar, dá para preservar amplitude, circulação e conforto — e prevenir complicações da imobilidade.
+                Se antes ele conseguia tomar banho, levantar ou caminhar sozinho e agora precisa de ajuda, é importante investigar as causas e avaliar sua capacidade funcional.
               </p>
             </div>
           </article>
@@ -583,9 +609,9 @@
               </svg>
             </span>
             <div>
-              <h3 class="text-base font-semibold text-bark-800">Levar até a clínica virou um problema</h3>
+              <h3 class="text-base font-semibold text-bark-800">Sair de casa para fazer fisioterapia virou um desafio?</h3>
               <p class="mt-2 text-sm leading-relaxed text-bark-600">
-                Transporte difícil, cansaço no deslocamento, sessão perdida por causa da chuva. Em casa nada disso atrapalha.
+                O atendimento domiciliar permite realizar a reabilitação no ambiente onde a pessoa vive, com exercícios adaptados às suas necessidades e à sua rotina.
               </p>
             </div>
           </article>
@@ -597,9 +623,9 @@
               </svg>
             </span>
             <div>
-              <h3 class="text-base font-semibold text-bark-800">Não sabe se o caso dela se encaixa</h3>
+              <h3 class="text-base font-semibold text-bark-800">Você não sabe qual é o melhor cuidado para seu familiar?</h3>
               <p class="mt-2 text-sm leading-relaxed text-bark-600">
-                Me manda uma mensagem contando a situação. Se não for comigo, eu te oriento para onde procurar.
+                A avaliação fisioterapêutica identifica dificuldades, capacidades preservadas e objetivos do tratamento, permitindo construir um plano individualizado.
               </p>
               <a href="#" data-whatsapp class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-700 underline-offset-4 hover:underline">
                 Falar comigo no WhatsApp
@@ -608,6 +634,22 @@
             </div>
           </article>
         </div>
+
+        <div class="reveal mx-auto mt-14 max-w-3xl rounded-[2rem] border border-sand-300 bg-white/85 px-7 py-9 text-center shadow-soft sm:px-10">
+          <p class="titulo text-xl text-bark-800 sm:text-2xl">
+            Seu familiar não precisa enfrentar essas dificuldades sem orientação.
+          </p>
+          <p class="mt-5 text-base leading-relaxed text-bark-600">
+            O primeiro passo para cuidar da autonomia de quem você ama é entender suas necessidades. Agende uma avaliação fisioterapêutica domiciliar e descubra como um acompanhamento individualizado pode contribuir para mais movimento, segurança e qualidade de vida.
+          </p>
+          <a href="#" data-whatsapp
+             class="mt-8 inline-flex items-center justify-center gap-3 rounded-full bg-sage-700 px-8 py-4 text-sm font-semibold tracking-wide text-white shadow-card transition hover:-translate-y-0.5 hover:bg-sage-800">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.06c-.25.69-1.44 1.32-2 1.4-.51.08-1.15.11-1.86-.12-.43-.13-.98-.31-1.69-.62-2.98-1.29-4.92-4.29-5.07-4.49-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37.2 0 .39 0 .57.01.18.01.42-.07.66.5.25.6.84 2.06.91 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.71.81 2.01.96.3.15.5.22.57.35.07.12.07.72-.18 1.41Z"/>
+            </svg>
+            Fale comigo no WhatsApp
+          </a>
+        </div>
       </div>
     </section>
 
@@ -615,9 +657,9 @@
          SEÇÃO 3 — QUEM É A DRA. SARA
          ============================================================ -->
     <section id="sobre" class="bg-sand-200 py-20 lg:py-28">
-      <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2 lg:gap-20 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-2 lg:items-start lg:gap-20 lg:px-8">
 
-        <div class="relative reveal lg:order-1">
+        <div class="relative reveal lg:order-1 lg:sticky lg:top-28">
           <div class="absolute -left-4 -top-4 h-28 w-28 rounded-full border border-gold-300/70" aria-hidden="true"></div>
           <div class="absolute -bottom-6 -right-4 hidden h-40 w-40 rounded-full bg-sage-200/60 sm:block" aria-hidden="true"></div>
 
@@ -637,33 +679,48 @@
         <div class="reveal lg:order-0">
           <span class="olho text-gold-500">Quem vai cuidar</span>
           <h2 class="filete titulo mt-4 text-3xl text-bark-800 sm:text-4xl lg:text-[2.6rem]">
-            Prazer, eu sou a <strong>Sara</strong>.
+            Prazer, eu sou a <strong>Sara Melo</strong>.
           </h2>
 
           <div class="mt-8 space-y-5 text-base leading-[1.85] text-bark-600">
             <p>
-              Sou fisioterapeuta e escolhi atender onde a reabilitação realmente acontece: dentro de casa. É lá que a pessoa levanta da cama, atravessa o corredor, senta no sofá, sobe o degrau da porta — e é lá que o treino precisa fazer sentido.
+              Sou fisioterapeuta, esposa, mãe e, acima de tudo, uma mulher que acredita que <span class="frase-destaque">cuidar de pessoas vai muito além de tratar uma doença</span>.
             </p>
             <p>
-              Trabalho com <strong class="font-semibold text-bark-800">neurologia</strong> — principalmente reabilitação pós-AVC e doença de Parkinson — e com <strong class="font-semibold text-bark-800">geriatria</strong>, ajudando o idoso a manter força, equilíbrio e independência para continuar fazendo o que sempre fez.
+              Minha trajetória na fisioterapia me fez descobrir uma paixão especial pelo cuidado com a pessoa idosa e pela reabilitação neurológica. Foi nessa área que encontrei meu propósito: ajudar pessoas a preservarem seus movimentos, recuperarem sua confiança e conquistarem mais independência no dia a dia.
             </p>
             <p>
-              Entendo que procurar fisioterapia para um pai ou uma mãe vem junto com muita dúvida e um pouco de culpa. Meu compromisso é te explicar cada passo, com honestidade sobre o que dá para alcançar — e cuidar da sua família com o mesmo carinho que eu gostaria que cuidassem da minha.
+              Sou pós-graduada em Gerontologia e Neurologia, com formação também na área de Ortopedia e Traumatologia. Escolhi dedicar meu trabalho à fisioterapia domiciliar porque acredito que o cuidado precisa fazer sentido na vida real de cada paciente.
+            </p>
+            <p>
+              Para mim, não se trata apenas de fortalecer músculos ou melhorar o equilíbrio. Trata-se de ajudar uma mãe a voltar a caminhar com mais segurança, um pai a levantar da cadeira com menos dificuldade e uma família a perceber que ainda existem possibilidades.
+            </p>
+            <p>
+              <span class="frase-destaque">Cada paciente tem uma história</span>, seus desafios e suas conquistas. E nenhuma evolução, por menor que pareça, passa despercebida por mim.
+            </p>
+            <p>
+              Meu atendimento é individualizado, baseado em conhecimento científico, escuta, respeito e acolhimento. Cuido de cada pessoa com a responsabilidade que eu gostaria que tivessem ao cuidar de alguém da minha própria família.
+            </p>
+            <p>
+              Porque acredito que <span class="frase-destaque">envelhecer não significa deixar de viver com autonomia</span>.
+            </p>
+            <p>
+              Meu propósito é cuidar de pessoas, preservar histórias e ajudar cada paciente a viver com mais movimento, segurança e qualidade de vida.
             </p>
           </div>
 
           <!-- CONFERIR: número do CREFITO com a Sara antes de publicar -->
           <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-sand-400/70 pt-6">
             <span class="olho text-bark-500">CREFITO <span class="text-bark-400">(a confirmar)</span></span>
-            <span class="olho text-bark-500">Geriatria</span>
+            <span class="olho text-bark-500">Gerontologia</span>
             <span class="olho text-bark-500">Neurologia</span>
-            <span class="olho text-bark-500">Funcional</span>
+            <span class="olho text-bark-500">Ortopedia e Traumatologia</span>
           </div>
 
           <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="#" data-whatsapp
                class="inline-flex items-center justify-center gap-2 rounded-full bg-sage-700 px-7 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-sage-800">
-              Falar com a Sara no WhatsApp
+              Falar com Sara Melo no WhatsApp
             </a>
             <a href="#agendar" class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-gold-700 underline-offset-4 transition hover:underline">
               Preencher o formulário de avaliação
@@ -674,7 +731,7 @@
     </section>
 
     <!-- ============================================================
-         SEÇÃO 4 — O QUE EU TRATO
+         SEÇÃO 4 — MEUS SERVIÇOS
          ============================================================ -->
     <section id="tratamentos" class="relative overflow-hidden bg-sand-100 py-20 lg:py-28">
       <div class="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-sage-200/50 blur-3xl" aria-hidden="true"></div>
@@ -685,7 +742,7 @@
         <div class="mx-auto max-w-2xl text-center reveal">
           <span class="olho text-gold-500">Áreas de atuação</span>
           <h2 class="filete centro titulo mt-4 text-3xl text-bark-800 sm:text-4xl">
-            O que eu trato
+            Meus serviços
           </h2>
           <p class="mt-6 text-base leading-relaxed text-bark-600">
             Três frentes, todas com o mesmo objetivo: manter a pessoa funcional, segura e dona da própria rotina pelo maior tempo possível.
@@ -694,7 +751,7 @@
 
         <div class="mt-16 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
 
-          <!-- CARD 1 — NEUROLOGIA -->
+          <!-- CARD 1 — AVC -->
           <article class="reveal group flex h-full flex-col rounded-3xl border border-sand-300 bg-white/90 p-8 shadow-soft transition duration-300 hover:-translate-y-1.5 hover:shadow-card">
             <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-sage-100 to-sage-200 ring-1 ring-sage-200">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-sage-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
@@ -703,22 +760,16 @@
               </svg>
             </div>
 
-            <h3 class="titulo mt-6 text-2xl text-bark-800"><strong>Neurologia</strong></h3>
-            <p class="mt-2 text-base font-medium text-gold-700">Pós-AVC e doença de Parkinson.</p>
-
-            <ul class="mt-6 space-y-3 text-[15px] leading-relaxed text-bark-600 sm:text-base">
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Reabilitação depois do AVC</li>
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Recuperação de força e movimento do lado afetado</li>
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Doença de Parkinson: marcha, postura e rigidez</li>
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Treino de equilíbrio e coordenação</li>
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Reaprender atividades do dia a dia</li>
-            </ul>
-
-            <p class="mt-auto border-t border-sand-300 pt-6 text-[15px] leading-relaxed text-bark-500 sm:text-base">
-              Na reabilitação neurológica, começar cedo e manter constância muda o resultado. Cada semana conta.
+            <h3 class="titulo mt-6 text-2xl text-bark-800"><strong>AVC</strong></h3>
+            <p class="mt-4 text-[15px] leading-relaxed text-bark-600 sm:text-base">
+              Após um AVC, atividades simples como levantar da cadeira, caminhar ou movimentar um braço podem se tornar grandes desafios.
             </p>
 
-            <a href="#" data-whatsapp data-area="Neurologia (pós-AVC ou Parkinson)"
+            <p class="mt-auto border-t border-sand-300 pt-6 text-[15px] leading-relaxed text-bark-500 sm:text-base">
+              A fisioterapia atua na recuperação dos movimentos, no fortalecimento muscular, no equilíbrio e no treino da marcha, buscando melhorar a funcionalidade e promover mais independência nas atividades diárias.
+            </p>
+
+            <a href="#" data-whatsapp data-area="Reabilitação pós-AVC"
                class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-sage-700 px-6 py-3.5 text-base font-semibold text-white transition hover:bg-sage-800">
               Agendar avaliação
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -727,7 +778,7 @@
             </a>
           </article>
 
-          <!-- CARD 2 — GERIATRIA -->
+          <!-- CARD 2 — PARKINSON -->
           <article class="reveal group flex h-full flex-col rounded-3xl border border-sand-300 bg-white/90 p-8 shadow-soft transition duration-300 hover:-translate-y-1.5 hover:shadow-card">
             <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-sage-100 to-sage-200 ring-1 ring-sage-200">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-sage-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
@@ -736,22 +787,16 @@
               </svg>
             </div>
 
-            <h3 class="titulo mt-6 text-2xl text-bark-800"><strong>Geriatria</strong></h3>
-            <p class="mt-2 text-base font-medium text-gold-700">Força, equilíbrio e independência.</p>
-
-            <ul class="mt-6 space-y-3 text-[15px] leading-relaxed text-bark-600 sm:text-base">
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Fortalecimento contra a perda de massa muscular</li>
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Prevenção de quedas e treino de equilíbrio</li>
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Voltar a levantar da cama e da cadeira sozinho</li>
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Cuidados com o idoso acamado</li>
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Orientação para a família e para o cuidador</li>
-            </ul>
-
-            <p class="mt-auto border-t border-sand-300 pt-6 text-[15px] leading-relaxed text-bark-500 sm:text-base">
-              Envelhecer não é sinônimo de parar. Perder funcionalidade não é "coisa da idade" — é sinal de que precisa de trabalho.
+            <h3 class="titulo mt-6 text-2xl text-bark-800"><strong>Parkinson</strong></h3>
+            <p class="mt-4 text-[15px] leading-relaxed text-bark-600 sm:text-base">
+              A doença de Parkinson pode provocar lentidão dos movimentos, rigidez muscular, alterações no equilíbrio e dificuldades para caminhar.
             </p>
 
-            <a href="#" data-whatsapp data-area="Fisioterapia geriátrica"
+            <p class="mt-auto border-t border-sand-300 pt-6 text-[15px] leading-relaxed text-bark-500 sm:text-base">
+              Com exercícios específicos e acompanhamento individualizado, a fisioterapia ajuda a melhorar a mobilidade, a postura, a segurança ao caminhar e a preservar a autonomia por mais tempo.
+            </p>
+
+            <a href="#" data-whatsapp data-area="Doença de Parkinson"
                class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-sage-700 px-6 py-3.5 text-base font-semibold text-white transition hover:bg-sage-800">
               Agendar avaliação
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -760,7 +805,7 @@
             </a>
           </article>
 
-          <!-- CARD 3 — FUNCIONAL -->
+          <!-- CARD 3 — GERIATRIA -->
           <article class="reveal group flex h-full flex-col rounded-3xl border border-sand-300 bg-white/90 p-8 shadow-soft transition duration-300 hover:-translate-y-1.5 hover:shadow-card md:col-span-2 lg:col-span-1">
             <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-sage-100 to-sage-200 ring-1 ring-sage-200">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-sage-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
@@ -768,21 +813,16 @@
               </svg>
             </div>
 
-            <h3 class="titulo mt-6 text-2xl text-bark-800"><strong>Funcional</strong></h3>
-            <p class="mt-2 text-base font-medium text-gold-700">O treino que serve para a vida real.</p>
-
-            <ul class="mt-6 space-y-3 text-[15px] leading-relaxed text-bark-600 sm:text-base">
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Exercícios com o que existe dentro de casa</li>
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Subir escada, entrar no carro, tomar banho sozinho</li>
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Condicionamento e fôlego para a rotina</li>
-              <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Adaptação do ambiente para reduzir risco</li>
-            </ul>
-
-            <p class="mt-auto border-t border-sand-300 pt-6 text-[15px] leading-relaxed text-bark-500 sm:text-base">
-              De nada adianta ganhar força numa máquina se o desafio é o degrau da própria porta. O treino é montado sobre a sua casa.
+            <h3 class="titulo mt-6 text-2xl text-bark-800"><strong>Geriatria</strong></h3>
+            <p class="mt-4 text-[15px] leading-relaxed text-bark-600 sm:text-base">
+              Com o envelhecimento, podem surgir fraqueza muscular, dificuldades para levantar, alterações no equilíbrio e medo de cair.
             </p>
 
-            <a href="#" data-whatsapp data-area="Treino funcional"
+            <p class="mt-auto border-t border-sand-300 pt-6 text-[15px] leading-relaxed text-bark-500 sm:text-base">
+              A fisioterapia geriátrica trabalha o fortalecimento, a prevenção de quedas e a manutenção da capacidade funcional, ajudando o idoso a continuar realizando suas atividades com mais confiança, segurança e independência.
+            </p>
+
+            <a href="#" data-whatsapp data-area="Fisioterapia geriátrica"
                class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-sage-700 px-6 py-3.5 text-base font-semibold text-white transition hover:bg-sage-800">
               Agendar avaliação
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1336,7 +1376,7 @@
           <ul class="mt-5 space-y-3 text-sm text-bark-600">
             <li><a href="#para-voce" class="transition hover:text-gold-700">Isso é para você se…</a></li>
             <li><a href="#sobre" class="transition hover:text-gold-700">Quem é a Dra. Sara</a></li>
-            <li><a href="#tratamentos" class="transition hover:text-gold-700">O que eu trato</a></li>
+            <li><a href="#tratamentos" class="transition hover:text-gold-700">Serviços</a></li>
             <li><a href="#como-funciona" class="transition hover:text-gold-700">Como funciona</a></li>
             <li><a href="#onde-atendo" class="transition hover:text-gold-700">Onde eu atendo</a></li>
             <li><a href="#agendar" class="transition hover:text-gold-700">Agendar avaliação</a></li>
