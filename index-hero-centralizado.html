@@ -729,6 +729,21 @@
             <span class="olho text-bark-500">Ortopedia e Traumatologia</span>
           </div>
 
+          <!-- Diploma. A imagem publicada é tarjada: RG, data de nascimento,
+               filiação e código de validação foram cobertos antes de subir. -->
+          <div class="mt-8">
+            <button type="button" class="diploma-abrir group flex w-full items-center gap-4 rounded-2xl border border-sand-400/70 bg-white/70 p-3 text-left transition hover:-translate-y-0.5 hover:bg-white hover:shadow-soft">
+              <img src="diploma-sara.webp" alt="Diploma de Bacharelado em Fisioterapia da Faculdade UNIRB — Arapiraca"
+                   class="h-20 w-28 shrink-0 rounded-xl border border-sand-300 bg-white object-cover object-top"
+                   loading="lazy" decoding="async" />
+              <span class="min-w-0">
+                <span class="block text-sm font-semibold text-bark-800">Bacharelado em Fisioterapia</span>
+                <span class="mt-0.5 block text-sm leading-snug text-bark-600">Faculdade UNIRB &ndash; Arapiraca &middot; 2024</span>
+                <span class="mt-1 block text-[13px] font-medium text-gold-700 underline-offset-4 group-hover:underline">Ver o diploma</span>
+              </span>
+            </button>
+          </div>
+
           <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="#" data-whatsapp
                class="inline-flex items-center justify-center gap-2 rounded-full bg-sage-700 px-7 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-sage-800">
@@ -1429,6 +1444,23 @@
   <!-- ============================================================
        SCRIPTS
        ============================================================ -->
+  <!-- Lightbox do diploma -->
+  <div id="diploma-lightbox" hidden
+       class="fixed inset-0 z-[70] flex items-center justify-center bg-[rgba(40,35,30,.88)] p-4 backdrop-blur-sm sm:p-8"
+       role="dialog" aria-modal="true" aria-label="Diploma da Dra. Sara Melo">
+    <button type="button" id="diploma-fechar" aria-label="Fechar"
+            class="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-bark-700 shadow-soft transition hover:bg-white sm:right-6 sm:top-6">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+    </button>
+    <figure class="max-h-full overflow-auto">
+      <img src="diploma-sara.webp" alt="Diploma de Bacharelado em Fisioterapia de Sara Maria Silva de Melo, Faculdade UNIRB — Arapiraca, 2024"
+           class="mx-auto max-h-[80vh] w-auto max-w-full rounded-xl shadow-2xl" />
+      <figcaption class="mx-auto mt-4 max-w-xl text-center text-[13px] leading-relaxed text-sand-200">
+        Dados pessoais (RG, data de nascimento, filiação e código de validação) foram tarjados antes da publicação.
+      </figcaption>
+    </figure>
+  </div>
+
   <script>
   (function () {
     'use strict';
@@ -1437,7 +1469,7 @@
     /* Página de agendamento do Google Calendar.
        Cole aqui o link que o Google dá em "Compartilhar → Incorporar" ou "Copiar link".
        Vazio = segue valendo o calendário de preferência de dia, que vai pelo WhatsApp. */
-    var AGENDA_GOOGLE = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ26UvMM_S2EZvOS_p_vFSABuzjMIF3NyMaqyc2V-sId4UZEnOnn-wvMXmIQRtdlQk6i8XFQRfiQ';
+    var AGENDA_GOOGLE = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3crzNJcuygVq-54oDlpbfFSlJ_Yl3p96DRtGAz1eg-oHMxcrG8liO_2qxxZSVdQuM1WuoSZfYY';
 
     var WHATSAPP_NUMBER = '5582998427638';
     var WHATSAPP_MESSAGE = 'Olá, Sara! Vim pelo site e gostaria de agendar uma avaliação.';
@@ -1605,7 +1637,30 @@
 
     /* ---------- CALENDÁRIO: escolha do dia de preferência ---------- */
 
-    /* ---------------- AGENDAMENTO PELO GOOGLE CALENDAR ---------------- */
+  
+  /* ---------------- LIGHTBOX DO DIPLOMA ---------------- */
+  var lbDiploma = document.getElementById('diploma-lightbox');
+  if (lbDiploma) {
+    var abrirDiploma = function () {
+      lbDiploma.hidden = false;
+      document.body.style.overflow = 'hidden';
+      document.getElementById('diploma-fechar').focus();
+    };
+    var fecharDiploma = function () {
+      lbDiploma.hidden = true;
+      document.body.style.overflow = '';
+    };
+    [].forEach.call(document.querySelectorAll('.diploma-abrir'), function (b) {
+      b.addEventListener('click', abrirDiploma);
+    });
+    document.getElementById('diploma-fechar').addEventListener('click', fecharDiploma);
+    lbDiploma.addEventListener('click', function (e) { if (e.target === lbDiploma) fecharDiploma(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !lbDiploma.hidden) fecharDiploma();
+    });
+  }
+
+  /* ---------------- AGENDAMENTO PELO GOOGLE CALENDAR ---------------- */
     var blocoGoogle = document.getElementById('agenda-google');
     var usaGoogle = !!AGENDA_GOOGLE && !!blocoGoogle;
 
@@ -1826,5 +1881,6 @@
     document.getElementById('ano').textContent = new Date().getFullYear();
   })();
   </script>
+
 </body>
 </html>
