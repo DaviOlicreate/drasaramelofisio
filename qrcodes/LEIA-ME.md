@@ -21,21 +21,24 @@ confiável a um palmo de distância.
 
 ## Para onde cada um aponta
 
-- **Linktree** → https://drasaramelofisio.vercel.app/linktree
-- **Site** → https://drasaramelofisio.vercel.app
+- **Linktree** → https://drasaramelo.com.br/linktree
+- **Site** → https://drasaramelo.com.br
 - **WhatsApp** → abre a conversa com a mensagem "Olá, Sara! Gostaria de agendar uma avaliação."
-- **Avaliação** → https://drasaramelofisio.vercel.app/avaliacao, que redireciona para
-  o Google
+- **Avaliação** → https://drasaramelo.com.br/avaliacao, que redireciona para o Google
 
 ## Por que o QR de avaliação não aponta direto para o Google
 
-Ele passa por `drasaramelofisio.vercel.app/avaliacao`, que redireciona. Assim o
+Ele passa por `drasaramelo.com.br/avaliacao`, que redireciona. Assim o
 cartão impresso continua valendo se o link do Google mudar — é só alterar o
 redirecionamento. Apontando direto para o `g.page`, qualquer mudança obrigaria a
 reimprimir tudo.
 
-## Se algum link mudar
+## Histórico
 
-Os QR apontam para URLs fixas. Se o site sair do `.vercel.app` para um domínio
-próprio, os três precisam ser gerados de novo — vale imprimir pouca quantidade
-até o domínio estar definido.
+Em 18/11/2026 o site passou para o domínio próprio **drasaramelo.com.br**. Os QR
+de site, linktree e avaliação foram gerados de novo. O de WhatsApp não mudou,
+porque aponta para o `wa.me` e não depende do domínio.
+
+Os cartões antigos, impressos com `drasaramelofisio.vercel.app`, continuam
+funcionando — aquele endereço redireciona para o domínio novo. Mas passam a
+depender desse redirecionamento, então vale substituí-los quando puder.
